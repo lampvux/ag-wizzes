@@ -1,0 +1,131 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs settings-background" style="background-image: url('./assets/img/sections/joshua-earles.jpg')">
+        <div class="filter"></div>
+    </div>
+    <div class="profile-content section">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <form class="settings-form" name="setting_form">
+                        
+                        
+                        <ul class="notifications">
+                            <li class="notification-item">
+                                
+                                <select name="language" id="language" data-toggle="tooltip" title="Language"  [(ngModel)]="language" class="form-control">
+                                    <option value="EN">ENGLISH</option>
+                                    <option value="FR">FRENCH</option>
+                                    <option value="ES">ESPAGNOL</option>
+                                    <option value="RU">RUSSIAN</option>
+                                </select>
+                            </li>
+                            <li class="notification-item">
+                                <select name="currency" id="currency" data-toggle="tooltip" title="Currency"  [(ngModel)]="currency" class="form-control">
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>                                    
+                                    
+                                </select>
+                            </li>
+                            <li class="notification-item">
+                                Push Notifications
+                                <bSwitch [switch-on-color]="'success'" 
+                                [switch-off-color]="'success'" 
+                                [(ngModel)]="push_notification" 
+                                switch-on-text="<i class='nc-icon nc-check-2'></i>"
+                                switch-off-text="<i class='nc-icon nc-simple-remove'></i>"
+                                 (onChangeState)="onChange($event)"
+                                 name="push_noti"
+                                 >
+                                
+                                </bSwitch>
+                                
+                            </li>
+                            <li class="notification-item">
+                                Allow Friend to see my lists
+                                <bSwitch [switch-on-color]="'success'" 
+                                [switch-off-color]="'success'"
+                                 [(ngModel)]="friend_see_list"
+                                  switch-on-text="<i class='nc-icon nc-check-2'></i>"
+                                switch-off-text="<i class='nc-icon nc-simple-remove'></i>"
+                                (onChangeState)="onChange($event)" 
+                                name="allow_list"
+                                >
+                                
+                                </bSwitch>
+                            
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <button type="submit" (click)="updateSettings()" class="btn btn-wd btn-info btn-round">Save</button>
+                        </div>
+                        <div class="form-group">
+                            <label for=""></label>
+                            <ng-container *ngIf="message">
+                                <div class="alert alert-danger " data-notify="container">
+                                    <div class="alert-wrapper text-center">
+                                        <div class="message">
+                                            {{message}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-md-8 ml-auto mr-auto">
+                    <h3 class="text-center">Contact Us</h3>
+                    <div class="media media-post">                       
+                        <div class="media-body">
+                            <form action="" name="form-contact" class="text-center">
+                                <textarea class="form-control border-input" [(ngModel)]="contactMessage" name="contactMessage" placeholder="Write some nice stuff or anything you want to ask us..." rows="6"></textarea>
+                                <div class="media-footer">
+                                    <a  (click)="sendContactMess()" class="btn btn-info btn-wd ">Send</a>
+                                </div>
+                            </form>
+                        </div>                        
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <ng-container *ngIf="contactmess">
+                            <div class="alert alert-warning " data-notify="container">
+                                <div class="alert-wrapper text-center">
+                                    <div class="message">
+                                        {{contactmess}}
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <!-- end media-post -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer section-nude">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">Licenses</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © , made with
+                    <i class="fa fa-heart heart"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

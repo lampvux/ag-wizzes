@@ -1,0 +1,152 @@
+<div class="team-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <h2 class="title">My Share Lists 
+                </h2>
+                <a class="btn btn-success btn-rotate btn-round pull-right" [routerLink]="['/new-share-list']">
+                    <i class="nc-icon nc-simple-add "></i> New Share List</a>
+                <h5 class="description">
+                </h5>
+            </div>
+        </div>
+        <div class="space-top"></div>
+        <div class="row">
+            <ngb-tabset type="pills" class="nav-pills-danger nav-justified col-md-12">
+                <ngb-tab title="Lastest" class="col-md-4">
+                    <div class="row">
+                        <ng-template ngbTabContent>
+                            <div class="row" >
+                                <div *ngFor="let list of ( SharelistsTime )" class="col-md-4">
+                                    <a [routerLink]="['/share-list-details', list.id, list.adminid ]">
+                                        <div>
+                                            <div class="card card-profile card-plain">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="card-img-top">
+                                                            <a [routerLink]="['/share-list-details', list.id, list.adminid ]">
+                                                                <img class="img" style="height: 200px;width:200px;"  src="{{ list.Url || './assets/img/placeholder.jpg' }} " />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <div class="card-body text-left">
+                                                            <h3 class="card-title text-lowercase">{{list.Title}}</h3>
+                                                            <h6 class="card-category">Open : {{list.OpenDate}}</h6>
+                                                            <h6 class="card-category">Expiry : {{list.ExpiryDate}}</h6>
+                                                            <p class="card-description">
+                                                                {{list.OtherInfo}}
+                                                            </p>
+                                                            <div class="card-footer pull-left">
+                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </ngb-tab>
+                <ngb-tab title="Title" class="col-md-4">
+                    <ng-template ngbTabContent>
+                        <div class="col-md-12">
+                            <div class="card card-profile card-plain" >
+                                <div *ngFor="let list of (SharelistsTitle ) ">
+                                    <a [routerLink]="['/share-list-details', list.id, list.adminid ]">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="card-img-top">
+                                                    <a [routerLink]="['/share-list-details', list.id, list.adminid ]">
+                                                        <img class="img" style="height: 200px;width:200px;" src="{{ list.Url || './assets/img/placeholder.jpg' }} " />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title text-lowercase">{{list.Title}}</h4>
+                                                    <h6 class="card-category">Open : {{list.OpenDate}}</h6>
+                                                    <h6 class="card-category">Expiry : {{list.ExpiryDate}}</h6>
+                                                    <p class="card-description">
+                                                    {{list.OtherInfo}}
+                                                    </p>
+                                                    
+                                                    <div class="card-footer pull-left">
+                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 pull-right">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title"></h4>
+                                                    <h6 class="card-category"></h6>
+                                                    <p class="card-description">
+                                                    
+                                                    </p>
+                                                    <div class="card-footer pull-left">
+                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Expiry Date" class="col-md-4">
+                    <ng-template ngbTabContent>
+                        <div class="col-md-12">
+                            <div class="card card-profile card-plain" >
+                                <div *ngFor="let list of (SharelistsExpiry ) ">
+                                    <a [routerLink]="['/share-list-details', list.id, list.adminid ]">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="card-img-top">
+                                                    <a [routerLink]="['/share-list-details', list.id, list.adminid ]">
+                                                        <img class="img" style="height: 200px;width:200px;" src="{{ list.Url || './assets/img/placeholder.jpg' }} " />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title text-lowercase">{{list.Title}}</h4>
+                                                    <h6 class="card-category">Open : {{list.OpenDate}}</h6>
+                                                    <h6 class="card-category">Expiry : {{list.ExpiryDate}}</h6>
+                                                    <p class="card-description">
+                                                        {{list.OtherInfo}}
+                                                    </p>
+                            
+                                                    <div class="card-footer pull-left">
+                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 pull-right">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title"></h4>
+                                                    <h6 class="card-category"></h6>
+                                                    <p class="card-description">
+                            
+                                                    </p>
+                                                    <div class="card-footer pull-left">
+                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+               
+            </ngb-tabset>
+        </div>
+    </div>
+</div>

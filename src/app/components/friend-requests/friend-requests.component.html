@@ -1,0 +1,76 @@
+<div class="team-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <h2 class="title">Pending Friend Requests</h2>
+                <h5 class="description">You can Reject or Accept the Requests.</h5>
+                <a class="btn btn-info btn-rotate btn-round pull-left" [routerLink]="['/friends']">
+                    <i class="fa fa-arrow-circle-left "></i> Back
+                    
+                </a>
+                
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-4" *ngFor="let item of friendRequests">
+               
+                    <div class="card card-profile card-plain">
+                        <div class="card-avatar">
+                            <a [routerLink]="['/user-details', item.Id]">
+                                <img src="{{item.Url  || './assets/img/placeholder.jpg'}}" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a [routerLink]="['/user-details', item.Id]">
+                                <div class="author">
+                                    <h4 class="card-title">{{item.Name}}</h4>
+                                    <h6 class="card-category text-muted">{{item.Email}}</h6>
+                                </div>
+                            </a>
+                            <p class="card-description text-center">
+                            
+                            </p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a  class="btn btn-link btn-outline btn-info" (click)="acceptFriendRequest(item.id, item.Email, item.Id, item.Name,  item.Url)">
+                                <i class="fa fa-dribbble"></i>Accept
+                            </a>
+                            <a  class="btn btn-link btn-outline btn-danger" (click)="denyFriendRequest(item.id)">
+                                <i class="fa fa-twitter"></i>Delete
+                            </a>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+<footer class="footer section-nude" *ngIf="is_request">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">Licenses</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with
+                    <i class="fa fa-heart heart"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,240 @@
+<div class="team-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <h2 class="title" >Friends Blocked Gifts 
+                    
+                </h2>
+                <h5 class="description">
+                </h5>
+            </div>
+        </div>
+        
+        
+        <div class="space-top"></div>
+        <div class="row">
+            <ngb-tabset type="pills" class="nav-pills-danger nav-justified col-md-12">
+                <ngb-tab title="Lastest" class="col-md-3">
+                    <div class="row">
+                        <ng-template ngbTabContent>
+                            <div class="row">
+                                <div *ngFor="let item of friendBlockedGift  | async" class="col-md-4">
+                                    <a [routerLink]="['/view-list', item.id, item.uid]">
+                                        <div class="card card-profile card-plain">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="card-img-top">
+                                                        <a [routerLink]="['/view-list', item.id, item.uid]">
+                                                            <img class="img" src="{{item.Url[0]}}" style="height:160px;width:160px;" />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="card-body text-left">
+                                                        <h3 class="card-title">{{item.Title}}</h3>
+                                                        <h6 class="card-category">
+                                                        </h6>
+                                                        <h6 class="card-category">User : {{item.Name}}
+                                                           
+                                                        </h6>
+                                                        <h6 class="card-category">Block Time : {{item.ExpiryTimeBlock}}
+                                                            
+                                                        </h6>                                                        
+                                                        <div class="card-footer pull-left">
+                                                             Price : {{item.Price}} 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                            
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </ngb-tab>
+                <ngb-tab title="Price" class="col-md-3">
+                    <ng-template ngbTabContent>                        
+                        <div class="row" >
+                            <div class="col-md-12" *ngFor="let item of (friendBlockedGiftByPrice) | async">
+                                <div class="card card-profile card-plain">
+                                        <a [routerLink]="['/view-list', item.id, item.uid]">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="card-img-top">
+                                                        <a [routerLink]="['/view-list', item.id, item.uid]">
+                                                            <img class="img" src="{{item.Url[0] || 'assets/img/placeholder.jpg'}}" style="height:160px;width:160px;" />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="card-body text-left">
+                                                        <h4 class="card-title">{{item.Title}}</h4>
+                                                        <h6 class="card-category" *ngIf="item.Category">
+                                                            <b>Category :</b> {{item.Category}}</h6>
+                                                        <p class="card-description">
+                                                            Open: {{item.OpenDate}}
+                                                        </p>
+                                                        <p class="card-description">
+                                                            Expiry: {{item.ExpiryDate}}
+                                                        </p>
+                                                        <div class="card-footer pull-left">
+                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 pull-right">
+                                                    <div class="card-body text-left">
+                                                        <h4 class="card-title" *ngIf="item.Price">Price : {{item.Price}}
+                                                            
+                                                        </h4>
+                                                        <h6 class="card-category"></h6>
+                                                        <p class="card-description">
+                                                            {{item.Description}}
+                                                        </p>
+                                                        <div class="card-footer pull-left">
+                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Name" class="col-md-3">
+                    <ng-template ngbTabContent>
+                        <div class="row">
+                            <div class="col-md-12" *ngFor="let item of (friendBlockedGiftByName) | async">
+                                <div class="card card-profile card-plain">
+                                    <a [routerLink]="['/view-list', item.id, item.uid]">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="card-img-top">
+                                                    <a [routerLink]="['/view-list', item.id, item.uid]">
+                                                        <img class="img" src="{{item.Url[0] || 'assets/img/placeholder.jpg'}}" style="height:160px;width:160px;" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title">{{item.Title}}</h4>
+                                                    <h6 class="card-category" *ngIf="item.Category">
+                                                        <b>Category :</b> {{item.Category}}</h6>
+                                                    <p class="card-description">
+                                                        Open: {{item.OpenDate}}
+                                                    </p>
+                                                    <p class="card-description">
+                                                        Expiry: {{item.ExpiryDate}}
+                                                    </p>
+                                                    <div class="card-footer pull-left">
+                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pull-right">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title" *ngIf="item.Price">Price : {{item.Price}}
+                                                        
+                                                    </h4>
+                                                    <h6 class="card-category"></h6>
+                                                    <p class="card-description">
+                                                        {{item.Description}}
+                                                    </p>
+                                                    <div class="card-footer pull-left">
+                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>                            
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="UserName" class="col-md-3">
+                    <ng-template ngbTabContent>
+                        <div class="row">
+                            <div class="col-md-12" *ngFor="let item of (friendBlockedGiftByEmail ) | async">
+                                <div class="card card-profile card-plain">
+                                    <a [routerLink]="['/view-list', item.id, item.uid]">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="card-img-top">
+                                                    <a [routerLink]="['/view-list', item.id, item.uid]">
+                                                        <img class="img" src="{{item.Url[0]|| 'assets/img/placeholder.jpg'}}" style="height:160px;width:160px;" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title">{{item.Title}}</h4>
+                                                    <h6 class="card-category" *ngIf="item.Category">
+                                                        <b>Category :</b> {{item.Category}}</h6>
+                                                    <p class="card-description">
+                                                        Open: {{item.OpenDate}}
+                                                    </p>
+                                                    <p class="card-description">
+                                                        Expiry: {{item.ExpiryDate}}
+                                                    </p>
+                                                    <div class="card-footer pull-left">
+                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pull-right">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title" *ngIf="item.Price">Price : {{item.Price}}
+                                                        
+                                                    </h4>
+                                                    <h6 class="card-category"></h6>
+                                                    <p class="card-description">
+                                                        {{item.Description}}
+                                                    </p>
+                                                    <div class="card-footer pull-left">
+                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+</div>
+<footer class="footer section-nude" *ngIf="friendBlockedGift">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">Licenses</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with
+                    <i class="fa fa-heart heart"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

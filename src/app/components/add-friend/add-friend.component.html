@@ -1,0 +1,88 @@
+<div class="wrapper">
+
+    <div class="main">
+        <div class="section section-white section-search">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-12 ml-auto mr-auto text-center">
+                        <div class="form-group">
+                            <label for=""></label>
+                        </div>
+                        <div class="form-inline">
+                            <a class="btn btn-info btn-rotate btn-round pull-left" [routerLink]="['/friends']">
+                                <i class="fa fa-arrow-circle-left "></i> Back
+                            
+                            </a>
+                        </div>
+                        <form role="search" name="searchuser" class="form-inline search-form">
+                            <div class="input-group no-border">
+                                <span class="input-group-addon addon-xtreme no-border" id="basic-addon1">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                                <input type="text" [(ngModel)]="searchText" name="searchinput" class="form-control input-xtreme no-border" placeholder="Find Friend" aria-describedby="basic-addon1">
+                            </div>
+                        </form>
+                        <h6 class="text-muted">Are you looking for a new friend ?</h6>
+                        
+                        <ul class="list-unstyled follows" *ngIf="allusers" style="max-height: 500px;overflow-y: auto;">
+                            <li *ngFor="let item of allusers  | addFriendfilter : searchText">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <a [routerLink]="['/user-details', item.id]">
+                                            <div class="col-md-4 col-3">
+                                                <img src="{{item.Url || './assets/img/placeholder.jpg'}}" style="height:60px;width: 60px;" alt="Circle Image" class="img-circle img-no-padding ">
+                                            </div>
+                                            <div class="col-md-4 col-4 description">
+                                                <h5>
+                                                    <b>{{item.Name || ''}}</b>
+                                                    <br>
+                                                    <b>{{item. Email || ''}}</b>
+                                    
+                                                </h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 col-2">
+                                        <a  [routerLink]="['/user-details', item.id]"  class="btn btn-just-icon btn-round btn-outline-info btn-tooltip" placement="right" ngbTooltip="View Profile">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="text-missing">
+                            <h5 class="text-muted">If you are not finding who you’re looking for try using an email address. </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer class="footer section-nude" *ngIf="allusers">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">Licenses</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with
+                    <i class="fa fa-heart heart"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

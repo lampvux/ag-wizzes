@@ -1,0 +1,63 @@
+<div class="team-2 section-image" style="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <h2 class="title">Friends                    
+                </h2>
+                <a class="btn btn-info btn-rotate btn-round " [routerLink]="['/friend-requests']">
+                    <i class="nc-icon nc-simple-add "></i> Pending Friend Requests <span class="icon-danger">( {{friendRequestCount}} )</span></a>
+                <a class="btn btn-success btn-rotate btn-round "  [routerLink]="['/add-friend']">
+                    <i class="nc-icon nc-simple-add "></i> Add Friend</a>                
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                
+            </div>
+            <div class="col-md-2" *ngFor="let item of allFriend">
+                <a  [routerLink]="['../user-details', item.Id]">
+                <div class="card card-profile card-plain">
+                    <div class="card-img-top">
+                        <a [routerLink]="['../user-details', item.Id]">
+                            <img class="img" style="height:160px;width:160px;" src="{{item.Url || 'assets/img/placeholder.jpg'}}" />
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{item.Name}}</h4>
+                        <h6 class="card-category">{{item.Email}}</h6>
+                        <div class="card-footer">
+                            
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>            
+        </div>        
+    </div>
+</div>
+<footer class="footer section-nude" *ngIf="is_count">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">Licenses</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with
+                    <i class="fa fa-heart heart"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

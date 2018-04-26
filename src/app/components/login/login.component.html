@@ -1,0 +1,62 @@
+<ng-template *ngIf="auth.user | async; then authenticated else guest">
+  <!-- template will replace this ng-template -->
+</ng-template>
+<ng-template #guest>
+  <div class="wrapper">
+    <div class="page-header" style="background-image: url('./assets/img/sections/bruno-abatti.jpg');">
+      <div class="filter"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 ml-auto mr-auto">
+            <ng-container *ngIf="!auth.message; else elseTemplate">
+              <div class="alert alert-danger " data-notify="container" *ngIf="auth.error">
+                <div class="alert-wrapper">
+                  <div class="message">
+                    {{ auth.error }}
+                  </div>
+                </div>
+
+              </div>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <div class="alert alert-danger " data-notify="container">
+                <div class="alert-wrapper">
+                  <div class="message">
+                    {{auth.message}}
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+
+            <div class="card card-register">
+              <h3 class="" style="text-align:center;margin:0;">Welcome</h3>
+              <form class="register-form">
+                <label>Email</label>
+                <input type="email" [(ngModel)]="email" name="email" class="form-control no-border" placeholder="Email">
+
+                <label>Password</label>
+                <input type="password" [(ngModel)]="password" name="password" class="form-control no-border" placeholder="Password">
+                <button (click)="signInWithEmail()" class="btn btn-success btn-block btn-round">Login</button>
+              </form>
+              <div class="forgot">
+                <a href="#" class="btn btn-link btn-info ">Forgot password?</a>
+                <a href="#" [routerLink]="['/signup']" class="btn btn-link btn-info ">Create account?</a>
+                <button (click)="signInWithGoogle()" class="btn btn-just-icon btn-google">
+                  <i class="fa fa-google-plus"></i>
+                </button>
+                <button (click)="signInWithFacebook()" class="btn btn-just-icon btn-facebook">
+                  <i class="fa fa-facebook "></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #authenticated>
+  <button (click)="logout()" class="btn btn-link btn-danger">logout</button>
+</ng-template>

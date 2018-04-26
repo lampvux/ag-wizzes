@@ -1,0 +1,20 @@
+<div class="fileinput text-center">
+    <div *ngFor="let item of state; let i=index">
+        <div [ngClass]="{'img-circle':isRound}" class="thumbnail img-no-padding">
+            <img src={{item.imagePreviewUrl}} alt="..." />
+        </div>
+        <div class="form-group">
+            <!-- <button class="btn btn-outline-default btn-file btn-round" (click)="handleClick(i)" *ngIf="this.state[i].file">Change</button> -->
+            <button class="btn btn-link btn-danger" (click)="handleRemove(i)" *ngIf="this.state[i].file">
+                <i class="fa fa-times"></i> Remove</button>
+        </div>
+    </div>
+  
+    <div class="form-group">
+        <button class="btn btn-outline-default btn-file btn-round" (click)="handleClick()" *ngIf="!this.state[0].file">Select image</button>
+    </div>
+    <div *ngIf="error">
+        {{error}}
+    </div>
+
+</div>

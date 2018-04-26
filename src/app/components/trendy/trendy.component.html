@@ -1,0 +1,185 @@
+<div class="team-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <h2 class="title">Trendy Now
+                </h2>
+                
+                <h5 class="description">
+                </h5>
+            </div>
+        </div>
+        <div class="space-top"></div>
+        <div class="row">
+            <ngb-tabset type="pills" class="nav-pills-danger nav-justified col-md-12">
+                <ngb-tab title="Lastest" class="col-md-4">
+                    <div class="row">
+                        <ng-template ngbTabContent>
+                            <div class="row">
+                                <div *ngFor="let list of trendyByTime" class="col-md-4">
+                                    <a [routerLink]="['/trendy-details', list.id]">
+                                        <div>
+                                            <div class="card card-profile card-plain">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="card-img-top">
+                                                            <a [routerLink]="['/trendy-details', list.id]">
+                                                                <img class="img" src="{{ list.Url[0] || './assets/img/placeholder.jpg' }} " />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <div class="card-body text-left">
+                                                            <h3 class="card-title text-lowercase">{{list.Title}}</h3>
+                                                            <h6 class="card-category"> {{list.Country}}</h6>
+                                                            <h6 class="card-category"> {{list.Date}}</h6>
+                                                            <p class="card-description">
+                                                               
+                                                            </p>
+                                                            <div class="card-footer pull-left">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="form-group">
+                                        <label for=""></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </ngb-tab>
+                <ngb-tab title="Brand" class="col-md-4">
+                    <ng-template ngbTabContent>
+                        <div class="col-md-12">
+                            <div class="card card-profile card-plain">
+                                <div *ngFor="let list of trendyByBrand">
+                                    <a [routerLink]="['/trendy-details', list.id]">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="card-img-top">
+                                                    <a [routerLink]="['/trendy-details', list.id]">
+                                                        <img class="img" src="{{ list.Url[0] || './assets/img/placeholder.jpg' }} " />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title text-lowercase">{{list.Title}}</h4>
+                                                    <h6 class="card-category"> {{list.Country}}</h6>
+                                                    <h6 class="card-category"> {{list.Date}}</h6>
+                                                    <p class="card-description">
+                                                       
+                                                    </p>
+
+                                                    <div class="card-footer pull-left">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pull-right">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title"></h4>
+                                                    <h6 class="card-category"></h6>
+                                                    <p class="card-description">
+
+                                                    </p>
+                                                    <div class="card-footer pull-left">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="form-group">
+                                        <label for=""></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Country" class="col-md-4">
+                    <ng-template ngbTabContent>
+                        <div class="col-md-12">
+                            <div class="card card-profile card-plain">
+                                <div *ngFor="let list of tendyByCountry">
+                                    <a [routerLink]="['/trendy-details', list.id]">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="card-img-top">
+                                                    <a [routerLink]="['/trendy-details', list.id]">
+                                                        <img class="img" src="{{ list.Url[0] || './assets/img/placeholder.jpg' }} " />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title text-lowercase">{{list.Title}}</h4>
+                                                    <h6 class="card-category"> {{list.Country}}</h6>
+                                                    <h6 class="card-category"> {{list.Date}}</h6>
+                                                    <p class="card-description">
+                                                      
+                                                    </p>
+
+                                                    <div class="card-footer pull-left">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pull-right">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title"></h4>
+                                                    <h6 class="card-category"></h6>
+                                                    <p class="card-description">
+
+                                                    </p>
+                                                    <div class="card-footer pull-left">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="form-group">
+                                        <label for=""></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+            </ngb-tabset>
+        </div>
+    </div>
+</div>
+<footer class="footer section-nude" *ngIf="trendyByTime">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">Licenses</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © {{data | date: 'yyyy'}}, made with
+                    <i class="fa fa-heart heart"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

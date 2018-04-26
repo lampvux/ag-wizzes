@@ -1,0 +1,91 @@
+<div class="wrapper">
+    <div class="form-group">
+        <label for=""></label>
+
+    </div>
+    <div class="form-group">
+        <label for=""></label>
+    </div>
+    <div class="profile-content section">
+        <div class="container">            
+            <div class="row ">
+                <div class="col-md-6 col-sm-6 ml-auto mr-auto">
+                    <div class="card card-profile">
+                        <div class="card-avatar border-white">
+                            <a >
+                                <img src="{{Url || 'assets/img/placeholder.jpg'}}" alt="profile image" />
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">{{Name}}</h4>
+                            <h6 class="card-category">{{Email || Country}}</h6>
+                            <p class="card-description">
+                               {{Birth || ''}}
+                            </p>
+                            <div class="card-footer text-center">
+                                <ng-container *ngIf="friendstat; else nofriend">
+                                    <button class="btn btn-icon btn-outline-success btn-border btn-round" *ngIf="friendstat">
+                                        <i class="fa fa-check"></i> Friend</button>
+                                </ng-container>
+                                <ng-template #nofriend>
+                                    <ng-container *ngIf="request; else norequest">
+                                        <button (click)="cancelRequest()" class="btn btn-icon btn-outline-default btn-border btn-round" >
+                                            <i class="fa fa-check"></i> Friend Request Sent</button>
+                                    </ng-container>
+                                    <ng-template #norequest>
+                                        <button (click)="addFriend()" ng-disabled="isDisabled" class="btn btn-icon btn-outline-info btn-border btn-round" >
+                                            <i class="fa fa-plus"></i> Add Friend</button>
+                                    </ng-template>
+                                </ng-template>      
+                            </div>                            
+                        </div>
+                    </div>
+                    <a [routerLink]="[ 'lists' ]" *ngIf=" (friendstat && friendseelist)" class="container btn btn-outline-success btn-icon"><i class="fa fa-list-ol"></i>{{Name}} Lists</a>
+
+                    <ngb-accordion #acc="ngbAccordion" *ngIf=" (friendstat && friendseelist)" >
+                        <ngb-panel id="config-panel-one">
+                            <ng-template ngbPanelTitle>
+                                <h5 class="mb-0 panel-title">
+                                    <a class="collapsed">
+                                        Share Lists
+                                        <i class="nc-icon nc-minimal-down"></i>
+                                    </a>
+                                </h5>
+                            </ng-template>
+                            <ng-template ngbPanelContent>
+                               
+                            </ng-template>
+                        </ngb-panel>
+                    </ngb-accordion>
+                    <!-- end card -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer section-nude">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">Licenses</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    ©, made with
+                    <i class="fa fa-heart heart"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "module": "es2015",
+    "types": []
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ],
+  
+    "include": [
+      "./**/*",
+      "./../node_modules/jw-bootstrap-switch-ng2/dist/index.ts",
+      "./../node_modules/jw-bootstrap-switch-ng2/dist/directive.ts"
+    ]
+}

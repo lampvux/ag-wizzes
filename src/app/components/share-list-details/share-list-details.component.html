@@ -1,0 +1,282 @@
+<div class="team-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ml-auto mr-auto text-center">
+                <h2 class="title">My Share Lists 
+                </h2>
+                <ng-container *ngIf="is_join; else elseTemplate">
+                    <a class="btn btn-success btn-rotate btn-round pull-right" [routerLink]="['/newlist', id, AdminId]" >
+                        <i class="nc-icon nc-simple-add "></i> New List</a>
+                </ng-container>
+                <ng-template #elseTemplate>
+
+                    <a class="btn btn-success btn-rotate btn-round pull-right" (click)="acceptShareList()" *ngIf="!is_deny">
+                        <i class="nc-icon nc-simple-add " ></i>Accept Join</a>
+                    &nbsp;
+                    <a class="btn btn-warning btn-rotate btn-round pull-right"  (click)="denyShareList()" *ngIf="!is_deny"  >
+                        <i class="fa fa-times-circle " ></i>Deny Join</a>
+                    
+                </ng-template>              
+
+                <h5 class="description">
+                </h5>
+            </div>
+        </div>
+        <div class="space-top"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <ngb-accordion #acc="ngbAccordion" >
+                    <ngb-panel id="config-panel-one">
+                        <ng-template ngbPanelTitle>
+                            <h5 class="mb-0 panel-title">
+                                <a class="collapsed" placement="top" ngbtooltip="Show Info">
+                                    <b>{{Title}}</b>
+                                    <i class="nc-icon nc-minimal-down"></i>
+                                </a>
+                            </h5>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <form action="" name="sharelistdetailform">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for=""><b>Title :</b> <input type="text" name="title" id="title" class="form-control" [(ngModel)]="Title"></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><b>Member :</b> <button type="button" class="btn btn-outline-success btn-round" *ngFor="let item of Member">{{item}}</button></label>
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for=""><b>OpenDate :</b> <input type="date" name="OpenDate" class="form-control" id="OpenDate" [(ngModel)]="OpenDate"></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><b>ExpiryDate :</b> <input type="date" name="ExpiryDate" class="form-control" id="ExpiryDate" [(ngModel)]="ExpiryDate"></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><b>OtherInfo :</b> <textarea class="form-control textarea-limited" placeholder="" rows="5" cols="30" maxlength="150"  [(ngModel)]="OtherInfo"
+                                                #OtherInfos="ngModel" name="OtherInfo"></textarea></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <ng-container *ngIf="message; else nomessage">
+                                    <div class="alert alert-success " data-notify="container">
+                                        <div class="alert-wrapper text-center">
+                                            <div class="message">
+                                               {{message}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                                <div class="row buttons-row" *ngIf="uid === AdminId">                                    
+                                    <div class="col-md-4 col-sm-4">
+                                        <a class="btn btn-outline-danger btn-block btn-round" [routerLink]="['/my-share-list']">Back</a>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <a class="btn btn-danger btn-block btn-round" (click)="open(small, 'sm')">Delete</a>
+                                        <ng-template #small let-c="close" let-d="dismiss">
+                                            <div class="no-title modal-header no-border-header">
+                                                <!-- <h4 class="modal-title">Modal title</h4> -->
+                                                <button type="button" class="close" (click)="d('close')">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <h5>Are you sure you want to delete this? </h5>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="left-side">
+                                                    <button type="button" class="btn btn-default btn-link" (click)="c('close')">Never mind</button>
+                                                </div>
+                                                <div class="divider"></div>
+                                                <div class="right-side">
+                                                    <button type="button" class="btn btn-danger btn-link" (click)="c('delete')" >Yes</button>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <button class="btn btn-primary btn-block btn-round" (click)="UpdateshareList()">Save & Update </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for=""></label>
+        </div>
+        <div class="row">
+            <ngb-tabset type="pills" class="nav-pills-danger nav-justified col-md-12">
+                <ngb-tab title="Lastest" class="col-md-4">
+                    <div class="row">
+                        <ng-template ngbTabContent>
+                            <div class="row">
+                                <div *ngFor="let list of ListsshareditemLastest" class="col-md-4">
+                                    <a [routerLink]="['/list-details',AdminId, list.id, id]">
+                                        <div class="card card-profile card-plain">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="card-img-top">
+                                                        <a [routerLink]="['/list-details',AdminId, list.id, id]">
+                                                            <img class="img" src="{{list.Url[0]}}" />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="card-body text-left">
+                                                        <h3 class="card-title">{{list.Title}}</h3>
+                                                        <h6 class="card-category" *ngIf="list.Price">Price : {{list.Price}}
+                                                            
+                                                        </h6>
+                                                        <p class="card-description">
+                                                            Description : {{list.Description}}
+                                                        </p>
+                                                        <div class="card-footer pull-left">
+                                    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </ngb-tab>
+                <ngb-tab title="Title" class="col-md-4">
+                    <ng-template ngbTabContent>
+                        <div class="col-md-12">
+                            <div class="card card-profile card-plain">
+                                <div *ngFor="let list of ListsshareditemTitle">
+                                    <a [routerLink]="['/list-details',AdminId, list.id, id]">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="card-img-top">
+                                                    <a [routerLink]="['/list-details',AdminId, list.id, id]">
+                                                        <img class="img" src="{{list.Url[0]}}" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title">{{list.Title}}</h4>
+                                                    <h6 class="card-category">
+                                                        <b>Category :</b> {{list.Category}}</h6>
+                                                    <p class="card-description">
+                                                        Open: {{list.OpenDate}}
+                                                    </p>
+                                                    <p class="card-description">
+                                                        Expiry: {{list.ExpiryDate}}
+                                                    </p>
+                                                    <div class="card-footer pull-left">
+                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pull-right">
+                                                <div class="card-body text-left">
+                                                    <h4 class="card-title" *ngIf="list.Price">Price : {{list.Price}}
+                                                        
+                                                    </h4>
+                                                    <h6 class="card-category"></h6>
+                                                    <p class="card-description">
+                                                        {{list.Description}}
+                                                    </p>
+                                                    <div class="card-footer pull-left">
+                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Expiry Date" class="col-md-4">
+                    <ng-template ngbTabContent>
+                        <div class="col-md-12">
+                            <div class="card card-profile card-plain">
+                                <div *ngFor="let list of ListsshareditemExpiry">
+                                <a [routerLink]="['/list-details',AdminId, list.id, id]">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="card-img-top">
+                                                <a [routerLink]="['/list-details',AdminId, list.id, id]">
+                                                    <img class="img" src="{{list.Url[0]}}" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card-body text-left">
+                                                <h4 class="card-title">{{list.Title}}</h4>
+                                                <h6 class="card-category">{{list.Category}}</h6>
+                                                <p class="card-description">
+                                                    Open: {{list.OpenDate}}
+                                                </p>
+                                                <p class="card-description">
+                                                    Expiry: {{list.ExpiryDate}}
+                                                </p>
+                                                <div class="card-footer pull-left">
+                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 pull-right">
+                                            <div class="card-body text-left">
+                                                <h4 class="card-title" *ngIf="list.Price">Price : {{list.Price}}
+                                                   
+                                                </h4>
+                                                <h6 class="card-category"></h6>
+                                                <p class="card-description">
+                                                    {{list.Description}}
+                                                </p>
+                                                <div class="card-footer pull-left">
+                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+               
+            </ngb-tabset>
+        </div>
+    </div>
+</div>
+<footer class="footer section-nude" *ngIf="Title">
+    <div class="container">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">Licenses</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">Wizzes
+                    © {{data | date: 'yyyy'}}, made with
+                    <i class="fa fa-heart heart"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

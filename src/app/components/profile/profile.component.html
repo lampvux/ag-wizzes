@@ -1,0 +1,137 @@
+<div class="wrapper">
+  <div class="page-header page-header-xs settings-background" style="background-image: url('./assets/img/farid-askerov.jpg')">
+    <div class="filter"></div>
+  </div>
+  <div class="profile-content section">
+    <div class="container">
+      <div class="row">
+        <div class="profile-picture">
+          <app-image-upload [image]=""></app-image-upload>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 ml-auto mr-auto">
+          <form class="settings-form" name="profileform">
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>
+                    <b> Name</b>*</label>
+                  <input type="text" class="form-control border-input" id="displayName" required [(ngModel)]="displayName" #name="ngModel"
+                    value="{{displayName}}" name="displayName" placeholder=" Name">
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+                    <div *ngIf="name.errors.required">
+                      Name is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>
+                    <b>Email</b>*</label>
+                  <input type="email" class="form-control border-input" required [(ngModel)]="email" #emails="ngModel" value="{{email}}" name="email"
+                    placeholder="Last Name">
+                  <div *ngIf="emails.invalid && (emails.dirty || emails.touched)" class="alert alert-danger">
+                    <div *ngIf="emails.errors.required">
+                      Email is required.
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>
+                    <b> Country</b>
+                  </label>
+                  <input type="text" class="form-control border-input" [(ngModel)]="country" value="{{country}}" name="country" placeholder=" Name">
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>
+                    <b>Sex</b>
+                  </label>
+                  <angular2-multiselect [data]="dropdownList1" [(ngModel)]="sex" name="sex" [settings]="dropdownSettings1" (onSelect)="onItemSelect($event)">
+                  </angular2-multiselect>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label>
+                        <b> Birth</b></label>
+                    <div class='input-group date'>
+                        <input class="form-control" placeholder="birth"  name="birth" [(ngModel)]="birth" #births="ngModel" ngbDatepicker
+                        #d="ngbDatepicker" (click)="d.toggle()">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                        </span>
+                    </div>
+                    
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>
+                    <b>Telephone</b>
+                  </label>
+                  <input type="text" class="form-control border-input" [(ngModel)]="telephone" value="{{telephone}}" name="telephone" placeholder="Phone">
+                </div>
+              </div>
+            </div>
+            
+            <div class="alert alert-info " data-notify="container" *ngIf="message">
+                    <div class="alert-wrapper text-center">
+                        <div class="message">
+                            {{ message }}
+                        </div>
+                    </div>
+            
+                </div>
+            
+            <div class="text-center">
+              <button type="submit" (click)="updateUserData()" class="btn btn-wd btn-info btn-round">Save</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="footer section-nude">
+  <div class="container">
+    <div class="row">
+      <nav class="footer-nav">
+        <ul>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Blog</a>
+          </li>
+          <li>
+            <a href="#">Licenses</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="credits ml-auto">
+        <span class="copyright">
+          © {{data | date: 'yyyy'}}, made with
+          <i class="fa fa-heart heart"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>

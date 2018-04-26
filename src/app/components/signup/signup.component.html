@@ -1,0 +1,96 @@
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('./assets/img/sections/soroush-karimi.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-7 col-12 ml-auto">
+                    <div class="info info-horizontal">
+                        <div class="icon">
+                            <i class="fa fa-umbrella"></i>
+                        </div>
+                        <div class="description">
+                            <h3> We've got you covered </h3>
+                            <p>Larger, yet dramatically thinner. More powerful, but remarkably power efficient. Everything you
+                                need in a single case.</p>
+                        </div>
+                    </div>
+                    <div class="info info-horizontal">
+                        <div class="icon">
+                            <i class="fa fa-map-signs"></i>
+                        </div>
+                        <div class="description">
+                            <h3> Clear Directions </h3>
+                            <p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely
+                                deliverables for real-time schemas.</p>
+                        </div>
+                    </div>
+                    <div class="info info-horizontal">
+                        <div class="icon">
+                            <i class="fa fa-user-secret"></i>
+                        </div>
+                        <div class="description">
+                            <h3> We value your privacy </h3>
+                            <p>Completely synergize resource taxing relationships via premier niche markets.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-5 col-12 mr-auto">
+                    <div class="card card-register">
+                        <h5 *ngIf="auth.notify">
+                            {{auth.notify.message}}
+                        </h5>
+                        <div class="alert alert-danger " data-notify="container" *ngIf="message">
+                            <div class="alert-wrapper">
+                                <div class="message">
+                                     {{message}}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="card-title text-center">Register</h3>
+                        
+                        <div class="social">
+                            <button href="#" (click)="signInWithFacebook()" class="btn btn-just-icon btn-facebook">
+                                <i class="fa fa-facebook"></i>
+                            </button>
+                            <button href="#" (click)="signInWithGoogle()" class="btn btn-just-icon btn-google">
+                                <i class="fa fa-google"></i>
+                            </button>
+                            <button href="#" (click)="signInWithTwitter()" class="btn btn-just-icon btn-twitter">
+                                <i class="fa fa-twitter"></i>
+                            </button>
+                        </div>
+
+                        <div class="division">
+                            <div class="line l"></div>
+                            <span>or</span>
+                            <div class="line r"></div>
+                        </div>
+                        <form class="register-form" #registerForm="ngForm"  >
+                            
+                            <input type="email" #emails="ngModel" id="email" class="form-control" [(ngModel)]="email" name="email" required
+                                    placeholder="Email">
+                            <div [hidden]="emails.valid || emails.pristine" class="alert alert-danger">
+                                Email is required
+                            </div>
+                            <input type="password" [(ngModel)]="password" #passwords="ngModel" name="password" required class="form-control" placeholder="Password">
+                            <div [hidden]="passwords.valid || passwords.pristine" class="alert alert-danger">
+                                Password is required
+                            </div>
+                            <input type="password" [(ngModel)]="repassword" #repasswords="ngModel" name="repassword" required class="form-control" placeholder="Confirm Password">
+                            <div [hidden]="repasswords.valid || repasswords.pristine" class="alert alert-danger">
+                                Confirm Password is required
+                            </div>
+                            <button type="submit"  [disabled]="!registerForm.form.valid" class="btn btn-block btn-round" (click)="registerWithEmail()" data-toggle="tooltip" title="Fill theses field to register">Register</button>
+                        </form>
+                        <div class="login">
+                            <p>Already have an account?
+                                <a href="#" [routerLink]="['/login']">Log in</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
