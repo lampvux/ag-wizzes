@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     /// Anonymous Sign In
     signInWithEmail() {
-        this.auth.error = 'Loading...';
+        this.auth.error = 'Loading';
         this.auth.loginWithEmail(this.email, this.password)
             .then((credential) => this.afterSignIn())
             .catch(err => {

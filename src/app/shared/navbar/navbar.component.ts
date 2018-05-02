@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 import { NotificationService } from '../../core/services/notification.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html'
@@ -13,8 +14,14 @@ export class NavbarComponent implements OnInit {
 
     constructor(public location: Location,
         private element: ElementRef,
-        private auth: AuthService) {
+        private auth: AuthService,
+        translate: TranslateService) {
         this.sidebarVisible = false;
+        // this language will be used as a fallback when a translation isn't found in the current language
+        translate.setDefaultLang('fr');
+
+        // the lang to use, if the lang isn't available, it will use the current loader to get them
+        translate.use('en');
     }
 
     ngOnInit() {

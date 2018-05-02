@@ -2,10 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-center">
-                <h2 class="title">Pending Friend Requests</h2>
-                <h5 class="description">You can Reject or Accept the Requests.</h5>
+                <h2 class="title">{{ 'Pendingfriendrequest' | translate }}</h2>
+                <h5 class="description">{{ 'Acceptordenyfriend' | translate }}</h5>
                 <a class="btn btn-info btn-rotate btn-round pull-left" [routerLink]="['/friends']">
-                    <i class="fa fa-arrow-circle-left "></i> Back
+                    <i class="fa fa-arrow-circle-left "></i> {{ 'Back' | translate }}
                     
                 </a>
                 
@@ -34,10 +34,10 @@
                         </div>
                         <div class="card-footer text-center">
                             <a  class="btn btn-link btn-outline btn-info" (click)="acceptFriendRequest(item.id, item.Email, item.Id, item.Name,  item.Url)">
-                                <i class="fa fa-dribbble"></i>Accept
+                                <i class="fa fa-dribbble"></i>{{ 'Accept' | translate }}
                             </a>
                             <a  class="btn btn-link btn-outline btn-danger" (click)="denyFriendRequest(item.id)">
-                                <i class="fa fa-twitter"></i>Delete
+                                <i class="fa fa-twitter"></i>{{ 'Delete' | translate }}
                             </a>
                             
                         </div>
@@ -55,19 +55,14 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#">{{ 'Home' | translate }}</a>
                     </li>
-                    <li>
-                        <a href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a href="#">Licenses</a>
-                    </li>
+                    
                 </ul>
             </nav>
             <div class="credits ml-auto">
                 <span class="copyright">
-                    © {{data | date: 'yyyy'}}, made with
+                    © , made with
                     <i class="fa fa-heart heart"></i>
                 </span>
             </div>

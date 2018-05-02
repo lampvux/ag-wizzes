@@ -56,7 +56,7 @@ export class NewlistComponent implements OnInit, OnDestroy {
     constructor(
         private Listservice: ListsService,
         private sharelistService: FriendSharedlistService,
-        private auth: AuthService,
+        public auth: AuthService,
         private cateService: CategoryService,
         private imguploadservice: ImageUploadService,
         private mapsAPILoader: MapsAPILoader,
@@ -110,7 +110,7 @@ export class NewlistComponent implements OnInit, OnDestroy {
     }
     /** upload list */
     Pushupload() {
-        this.message = 'Upload new list,... Please wait..';
+        this.message = 'Uploadnewlist';
         if (this.title && this.description && this.expiry ) {
             let cat = (this.category) ? this.category[0]['itemName'] : '';
             this.lat = (this.lat) ? this.lat : this.ll;
@@ -127,7 +127,7 @@ export class NewlistComponent implements OnInit, OnDestroy {
             }
         } else {
 
-            this.message = 'Failed to create new list. Please check the required * field';
+            this.message = 'Failcreatelistrequired';
         }
     }
     ngOnInit() {

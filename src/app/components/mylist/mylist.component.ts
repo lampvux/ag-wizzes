@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Listitems } from '../../core/models/lists';
 import { ListsService } from '../../core/services/lists.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 @Component({
     selector: 'app-mylist',
     templateUrl: './mylist.component.html',
@@ -13,25 +14,22 @@ export class MylistComponent implements OnInit, OnDestroy {
     ListsitemCategory;
     is_list;
     private sub;
-    constructor(private Listservice: ListsService, private router: Router, private rout: ActivatedRoute) {
+    constructor(private Listservice: ListsService, private auth: AuthService,  private router: Router, private rout: ActivatedRoute) {
 
      }
-    getallList() {
+    ngOnInit() {
         this.Listservice.getListsbyTime('asc').subscribe(lists => {
-                this.Listsitem = lists;
-            this.is_list = lists.length;
+            this.Listsitem = lists;
 
+            this.is_list = lists.length;
         });
         this.Listservice.getListsbyPrice('asc').subscribe(listprice => {
             this.ListsitemPrice = listprice;
+
         });
         this.Listservice.getListbyCategory('asc').subscribe(listcate => {
             this.ListsitemCategory = listcate;
         });
-    }
-    ngOnInit() {
-
-       this.getallList();
         const navbar = document.getElementsByTagName('nav')[0];
         // If they scrolled down and are past the navbar, add class .nav-up.
         // This is necessary so you never see what is "behind" the navbar.

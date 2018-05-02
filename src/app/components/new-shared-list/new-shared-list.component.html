@@ -19,7 +19,7 @@
                             <div class="col-md-12 col-sm-6">
                                 <div class="form-group">
                                     <label>
-                                        <b>Admin: </b></label>
+                                        <b>{{ 'Admin' | translate }}: </b></label>
                                     <b><strong class="pull-right">{{Admin}}</strong></b>
                                 </div>
                             </div>
@@ -27,14 +27,14 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-6">
                                 <div class="form-group">
-                                    <h6>Title
+                                    <h6>{{ 'Title' | translate }}
                                         <span class="icon-danger">*</span>
                                     </h6>
                                     <input type="text" class="form-control border-input" required [(ngModel)]="Title" #titles="ngModel" name="title" placeholder="Title of item">
                                     <div *ngIf="titles.invalid && (titles.dirty || titles.touched)" class="alert alert-danger form-control">
                                 
                                         <div *ngIf="titles.errors.required">
-                                            Title is required.
+                                             {{ 'Titlerequired' | translate }}
                                         </div>
                                     </div>
                                 </div>
@@ -44,9 +44,9 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>
-                                        <b>Member : </b>
+                                        <b>{{ 'Member' | translate }} : </b>
                                     </label>
-                                    <a class="btn btn-info btn-block btn-round" (click)="open(small, 'sm')">Add Member</a>
+                                    <a class="btn btn-info btn-block btn-round" (click)="open(small, 'sm')">{{ 'Addmember' | translate }}</a>
                                     <div class="form-group">
                                         <div >
                                             <ul >
@@ -58,13 +58,13 @@
                                     </div>
                                     <ng-template #small let-c="close" let-d="dismiss">
                                         <div class="no-title modal-header no-border-header">
-                                            <h4 class="modal-title">Add Friends to share list <button type="button" class="close" (click)="d('cancel')">
+                                            <h4 class="modal-title">{{ 'Sharelistaddfriend' | translate }} <button type="button" class="close" (click)="d('cancel')">
                                                 <span aria-hidden="true">&times;</span>
                                             </button></h4> 
                                             
                                         </div>
                                         <div class="modal-body text-center">
-                                            <label for="">Choose which friend will be added to this share list : </label>
+                                            <label for="">{{ 'Friendsharelistmess' | translate }}: </label>
                                             <angular2-multiselect 
                                                 [data]="dropdownList1"
                                                 #members="ngModel" 
@@ -79,11 +79,11 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="left-side">
-                                                <button type="button" class="btn btn-default btn-link" (click)="c('cancel')">Cancel</button>
+                                                <button type="button" class="btn btn-default btn-link" (click)="c('cancel')">{{ 'Cancel' | translate }}</button>
                                             </div>
                                             <div class="divider"></div>
                                             <div class="right-side">
-                                                <button type="button" class="btn btn-danger btn-link" (click)="c('addriend')" >Add Friends</button>
+                                                <button type="button" class="btn btn-danger btn-link" (click)="c('addriend')" >{{ 'Addfriend' | translate }}</button>
                                             </div>
                                         </div>
                                     </ng-template>
@@ -96,11 +96,11 @@
                             <div class="col-md-12 col-sm-6">
                                 <div class="form-group">
                                     <label>
-                                        <b> Other Information : </b></label>
-                                    <textarea class="form-control textarea-limited" required [(ngModel)]="OtherInfo" #others="ngModel" name="OtherInfo" placeholder="This is a textarea limited to 150 characters." rows="3" maxlength="150"></textarea>
+                                        <b> {{ 'Otherinfomation' | translate }}: </b></label>
+                                    <textarea class="form-control textarea-limited" required [(ngModel)]="OtherInfo" #others="ngModel" name="OtherInfo" placeholder="{{ 'Otherinfomation' | translate }}" rows="3" maxlength="150"></textarea>
                                     <h5>
                                         <small>
-                                            <span id="textarea-limited-message" class="pull-right">150 characters left</span>
+                                            
                                         </small>
                                     </h5>
                                 </div>
@@ -109,7 +109,7 @@
                             <div class="col-md-12 col-sm-6">
                                 <div class="form-group">
                                     <label>
-                                        <b>Expiry Date: </b>
+                                        <b>{{ 'Expirydate' | translate }}: </b>
                                         <span class="icon-danger">*</span>
                                     </label>
                                     <input type="date" class="form-control border-input" required [(ngModel)]="ExpiryDate" #expirys="ngModel" name="expiry" placeholder="">
@@ -120,7 +120,7 @@
                             <div class="alert alert-danger " data-notify="container" *ngIf="error">
                                 <div class="alert-wrapper text-center">
                                     <div class="message">
-                                        {{ error }}
+                                        {{ error | translate }}
                                     </div>
                                 </div>
                         
@@ -130,15 +130,15 @@
                             <div class="alert alert-success " data-notify="container">
                                 <div class="alert-wrapper text-center">
                                     <div class="message">
-                                         {{ infoMess }}
+                                         {{ infoMess |translate }}
                                     </div>
                                 </div>
                             </div>
                         </ng-container>
                         
                         <div class="text-center">
-                            <button type="submit" class="btn btn-wd btn-outline-default btn-round"  [routerLink]="['/my-share-list']">Go Back</button>
-                            <button type="submit"  class="btn btn-wd btn-info btn-round" (click)="CreateShareList()">Add List</button>
+                            <button type="submit" class="btn btn-wd btn-outline-default btn-round"  [routerLink]="['/my-share-list']">{{ 'Back' | translate }}</button>
+                            <button type="submit"  class="btn btn-wd btn-info btn-round" (click)="CreateShareList()">{{ 'Addlist' | translate }}</button>
                         </div>
                     </form>
 
@@ -153,14 +153,9 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#">{{ 'Home' | translate }}</a>
                     </li>
-                    <li>
-                        <a href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a href="#">Licenses</a>
-                    </li>
+                   
                 </ul>
             </nav>
             <div class="credits ml-auto">

@@ -51,17 +51,20 @@ export class SignupComponent implements OnInit, OnDestroy {
     }
     registerWithEmail() {
         if (!this.email) {
-            this.message = 'Email is Required !' ;
+            this.message = 'Emailrequired' ;
         } else
         if (!this.password ) {
-            this.message = 'Password is Required !' ;
+            this.message = 'Passwordrequired' ;
+        } else
+        if (!this.repassword ) {
+            this.message = 'Repasswordrequired' ;
         } else
         if (this.password !== this.repassword) {
-            this.message = 'Password does not match !';
+            this.message = 'Passwordnotmatch';
         } else {
             this.auth.emailSignUp(this.email, this.password)
                 .then((success) => {
-                    this.message = 'Registration successful.';
+                    this.message = 'Registersuccess';
                      this.afterSignup(); })
                 .catch((err) => {
 

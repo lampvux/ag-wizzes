@@ -3,7 +3,7 @@
     <div class="container">
         <div class="navbar-translate">
             <div class="navbar-header">
-                <a class="navbar-brand" [routerLink]="['/']">Home</a>
+                <a class="navbar-brand" [routerLink]="['/']"> {{ 'Home' | translate }}</a>
             </div>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02"
                 aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
@@ -16,35 +16,35 @@
             <ng-container *ngIf="if_user; else elseTemplate">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/mylist']">My List</a>
+                        <a class="nav-link" [routerLink]="['/mylist']"> {{ 'Mylist' | translate }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/my-share-list']">My Share Lists</a>
+                        <a class="nav-link" [routerLink]="['/my-share-list']"> {{ 'Mysharelist' | translate }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/friends']">Friends</a>
+                        <a class="nav-link" [routerLink]="['/friends']"> {{ 'Friends' | translate }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/friend-blocked-gifts']">Friends Blocked Gifts</a>
+                        <a class="nav-link" [routerLink]="['/friend-blocked-gifts']"> {{ 'Friendblockedgifts' | translate }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/notifications']">Notifications</a>
+                        <a class="nav-link" [routerLink]="['/notifications']">{{ 'Notifications' | translate }}</a>
                     </li>
                     <div ngbDropdown class="nav-item dropdown">
-                        <div class="nav-link dropdown-toggle" ngbDropdownToggle>More</div>
+                        <div class="nav-link dropdown-toggle" ngbDropdownToggle>{{ 'More' | translate }}</div>
                         <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
                             <a class="dropdown-item" [routerLink]="['/profile']">
-                                <i class="fa fa-user"></i>&nbsp;My Profile</a>
+                                <i class="fa fa-user"></i>&nbsp;{{ 'Myprofile' | translate }}</a>
                             <a class="dropdown-item" [routerLink]="['/trendy']">
-                                <i class="fa fa-fire"></i>&nbsp;Trendy Now</a>
+                                <i class="fa fa-fire"></i>&nbsp;{{ 'Trendynow' | translate }}</a>
                             <a class="dropdown-item" [routerLink]="['/settings-contact']">
-                                <i class="fa fa-cogs"></i>&nbsp;Settings & Contact Us</a>
+                                <i class="fa fa-cogs"></i>&nbsp;{{ 'Settingandcontact' | translate }}</a>
                         </div>
                     </div>
                 
                     <li class="nav-item">
                         <a class="btn btn-round btn-danger" (click)="auth.signOut()">
-                            Log Out
+                             {{ 'Logout' | translate }}
                         </a>
                     </li>
                 
@@ -54,7 +54,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="btn btn-round btn-danger" [routerLink]="['/login']">
-                            Log In
+                             {{ 'Login' | translate }}
                         </a>
                     </li>
                 </ul>

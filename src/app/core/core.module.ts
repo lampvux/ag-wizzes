@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { AuthService } from './services/auth.service';
 
-import { NotifyService } from './services/notify.service';
+
 import { FriendSharedlistService } from './services/friend-sharedlist.service';
 import { FriendsService } from './services/friends.service';
 import { ListsService } from './services/lists.service';
@@ -20,7 +20,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFireAuthModule,
     AngularFirestoreModule,
   ],
-  providers: [AuthService, NotifyService, FriendSharedlistService, FriendsService, ListsService, NotificationService,
+  providers: [AuthService,  FriendSharedlistService, FriendsService, ListsService, NotificationService,
     SettingContactService, TrendyService, ImageUploadService, CategoryService, FriendBlockedGiftService],
 })
 export class CoreModule { }

@@ -5,7 +5,8 @@ import 'rxjs/add/operator/filter';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-
+import { TranslateService } from '@ngx-translate/core';
+import {AuthService} from './core/services/auth.service';
 var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
@@ -24,8 +25,12 @@ export class AppComponent implements OnInit {
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
   constructor(private renderer: Renderer, private router: Router,
-     @Inject(DOCUMENT, ) private document: any, private element: ElementRef, 
-     public location: Location) { }
+     @Inject(DOCUMENT, ) private document: any, private element: ElementRef,
+     public location: Location, private auth: AuthService,
+      private translate: TranslateService) {
+
+      translate.setDefaultLang('en');
+       }
 
     @HostListener('window:scroll', ['$event'])
     hasScrolled() {
@@ -60,7 +65,15 @@ export class AppComponent implements OnInit {
 
         lastScrollTop = st;
     }
+    switchLanguage(language: string) {
+        this.translate.use(language);
+    }
     ngOnInit() {
+        this.auth.user.subscribe(user => {
+            if (user) {
+                this.switchLanguage(user.Language.toLowerCase());
+            }
+        });
         const navbar: HTMLElement = this.element.nativeElement.children[0].children[0];
         if (this.location.path() !== '/sections') {
         this.location.subscribe((ev: PopStateEvent) => {

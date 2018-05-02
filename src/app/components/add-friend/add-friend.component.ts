@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FriendsService } from '../../core/services/friends.service';
 import { AddFriendPipe } from './add-friend.pipe';
 import { Observable } from 'rxjs/Observable';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-friend',
   templateUrl: './add-friend.component.html',
@@ -12,7 +13,7 @@ export class AddFriendComponent implements OnInit, OnDestroy {
     allusers: any;
     allres = [];
     searchText;
-    constructor(private friendservice: FriendsService) {
+    constructor(private friendservice: FriendsService, private translate: TranslateService) {
 
      }
 

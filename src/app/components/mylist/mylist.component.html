@@ -2,19 +2,18 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 ml-auto mr-auto text-center">
-        <h2 class="title ">My List
+        <h2 class="title ">{{ 'Mylist' | translate }}
           <a class="btn btn-info btn-rotate btn-round pull-right" [routerLink]="['/newlist']">
-            <i class="nc-icon nc-simple-add "></i> New List</a>
+            <i class="nc-icon nc-simple-add "></i> {{ 'Newlist' | translate }}</a>
         </h2>
-        <h5 class="description">This is the paragraph where you can see more details about your lists. Keep you user engaged by providing meaningful
-          information.
+        <h5 class="description">{{ 'Mylistmessage' | translate }}
         </h5>
       </div>
     </div>
     <div class="space-top"></div>
     <div class="row">
       <ngb-tabset type="pills" class="nav-pills-danger nav-justified col-md-12">
-        <ngb-tab title="Lastest" class="col-md-4">
+        <ngb-tab title="{{ 'Lastest' | translate }}" class="col-md-4">
           <div class="row">
             <ng-template ngbTabContent >
             <div class="row">
@@ -32,9 +31,9 @@
                       <div class="col-md-7">
                         <div class="card-body text-left">
                           <h3 class="card-title">{{list.Title}}</h3>
-                          <h6 class="card-category">Price : {{list.Price}} <small>&euro;</small></h6>
+                          <h6 class="card-category" ng-if="list.Price">{{ 'Price' | translate }} : {{list.Price}} <small><i>{{this.auth.currency}}</i></small></h6>
                           <p class="card-description">
-                            Description : {{list.Description}}
+                             {{ 'Description' | translate }} : {{list.Description}}
                           </p>
                           <div class="card-footer pull-left">
 
@@ -50,7 +49,7 @@
             </ng-template>
           </div>
         </ngb-tab>
-        <ngb-tab title="Price" class="col-md-4">
+        <ngb-tab title="{{ 'Price' | translate }}" class="col-md-4">
           <ng-template ngbTabContent>
             <div class="col-md-12">
               <div class="card card-profile card-plain">
@@ -67,12 +66,12 @@
                             <div class="col-md-4">
                                 <div class="card-body text-left">
                                 <h4 class="card-title">{{list.Title}}</h4>
-                                <h6 class="card-category"><b>Category :</b> {{list.Category}}</h6>
+                                <h6 class="card-category"><b>{{ 'Category' | translate }} :</b> {{list.Category}}</h6>
                                 <p class="card-description">
-                                Open: {{list.OpenDate}}
+                                 {{ 'Open' | translate }}: {{list.OpenDate}}
                                 </p>
                                 <p class="card-description">
-                                Expiry: {{list.ExpiryDate}}
+                                 {{ 'Expiry' | translate }}: {{list.ExpiryDate}}
                                 </p>
                                 <div class="card-footer pull-left">
                                     
@@ -81,7 +80,7 @@
                             </div>
                             <div class="col-md-4 pull-right">
                                 <div class="card-body text-left">
-                                <h4 class="card-title">Price : {{list.Price}} <small>&euro;</small></h4>
+                                <h4 class="card-title" ng-if="list.Price">{{ 'Price' | translate }} : {{list.Price}} <small><i>{{this.auth.currency}}</i></small></h4>
                                 <h6 class="card-category"></h6>
                                 <p class="card-description">
                                     {{list.Description}}
@@ -98,7 +97,7 @@
             </div>
           </ng-template>
         </ngb-tab>
-        <ngb-tab title="Categories" class="col-md-4">
+        <ngb-tab title="{{ 'Categories' | translate }}" class="col-md-4">
             <ng-template ngbTabContent>
                 <div class="col-md-12">
                     <div class="card card-profile card-plain">
@@ -117,10 +116,10 @@
                                             <h4 class="card-title">{{list.Title}}</h4>
                                             <h6 class="card-category">{{list.Category}}</h6>
                                             <p class="card-description">
-                                                Open: {{list.OpenDate}}
+                                                 {{ 'Open' | translate }}: {{list.OpenDate}}
                                             </p>
                                             <p class="card-description">
-                                                Expiry: {{list.ExpiryDate}}
+                                                 {{ 'Expiry' | translate }}: {{list.ExpiryDate}}
                                             </p>
                                             <div class="card-footer pull-left">
                 
@@ -129,7 +128,7 @@
                                     </div>
                                     <div class="col-md-4 pull-right">
                                         <div class="card-body text-left">
-                                            <h4 class="card-title">Price : {{list.Price}}<small>&euro;</small></h4>
+                                            <h4 class="card-title" ng-if="list.Price">{{ 'Price' | translate }} : {{list.Price}}<small><i>{{this.auth.currency}}</i></small></h4>
                                             <h6 class="card-category"></h6>
                                             <p class="card-description">
                                                 {{list.Description}}
@@ -156,19 +155,14 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#">{{ 'Home' | translate }}</a>
                     </li>
-                    <li>
-                        <a href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a href="#">Licenses</a>
-                    </li>
+                    
                 </ul>
             </nav>
             <div class="credits ml-auto">
                 <span class="copyright">
-                    © {{data | date: 'yyyy'}}, made with
+                    ©, made with
                     <i class="fa fa-heart heart"></i>
                 </span>
             </div>

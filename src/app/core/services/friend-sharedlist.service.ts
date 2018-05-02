@@ -40,44 +40,40 @@ export class FriendSharedlistService {
 
     }
     getShareLists(field, sorttype, callback) {
-
+        const st = [];
         this.afs.collection<Sharelists>(`users/${this.auth.getUserId()}/ShareList`).snapshotChanges().map(changes => {
             return changes.map(a => {
                 const data = a.payload.doc.data() as Listitems;
                 const id = a.payload.doc.id;
                 data.Price = parseFloat(data.Price);
                 let adminid = this.auth.getUserId();
+                st.push({ adminid, id, ...data });
                 return { adminid, id, ...data };
             });
-        }).subscribe(mysharelist => {
-            const st = [];
-            for (let index = 0; index < mysharelist.length; index++) {
-                const element = mysharelist[index];
-                st.push(element);
-            }
-            // tslint:disable-next-line:max-line-length
-            this.afs.doc(`users/${this.auth.getUserId()}`).collection<MemberShareList>('MemberShareList').valueChanges().subscribe(acceptsharelist => {
+        });
+        // tslint:disable-next-line:max-line-length
+        this.afs.doc(`users/${this.auth.getUserId()}`).collection<MemberShareList>('MemberShareList').valueChanges().subscribe(acceptsharelist => {
 
-                for (let index = 0; index < acceptsharelist.length; index++) {
-                    const element = acceptsharelist[index];
-                    if (element.Accept === true) {
-                        const id = element.ShareListId;
-                        let adminid = element.AdminId;
-                        // tslint:disable-next-line:max-line-length
-                        this.afs.doc(`users/${element.AdminId}/ShareList/${element.ShareListId}`).valueChanges().subscribe(newacceptlist => {
-                            st.push({adminid, id, ...newacceptlist});
-                        });
-                    }
+            for (let index = 0; index < acceptsharelist.length; index++) {
+                const element = acceptsharelist[index];
+                if (element.Accept === true) {
+                    const id = element.ShareListId;
+                    let adminid = element.AdminId;
+                    console.log(element);
+                    // tslint:disable-next-line:max-line-length
+                    this.afs.doc(`users/${element.AdminId}/ShareList/${element.ShareListId}`).valueChanges().subscribe(newacceptlist => {
+                        st.push({ adminid, id, ...newacceptlist });
+                    });
                 }
-            });
-            callback(Observable.of(st).map(item => item.sort(
-                (a, b) => {
-                    if (a[field] < b[field]) { if (sorttype === 'asc') { return -1; } else { return 1; } }
-                    if (a[field] > b[field]) { if (sorttype === 'asc') { return 1; } else { return -1; } }
-                    return 0;
-                }
-            )));
-    });
+            }
+        });
+        callback(Observable.of(st).map(item => item.sort(
+            (a, b) => {
+                if (a[field] < b[field]) { if (sorttype === 'asc') { return -1; } else { return 1; } }
+                if (a[field] > b[field]) { if (sorttype === 'asc') { return 1; } else { return -1; } }
+                return 0;
+            }
+        )));
     }
     // Function to compare two objects by comparing their `unwrappedName` property.
 
@@ -356,7 +352,7 @@ export class FriendSharedlistService {
                                         self.afs.collection(`users/${element.uid}/MemberShareList`).add({
                                             Accept: false,
                                             AdminId: self.auth.getUserId(),
-                                            ShareListid: mess.id
+                                            ShareListId: mess.id
                                         }).then(res => {}).catch(err => console.log(err));
 
                                         self.afs.collection(`users/${element.uid}/Notification`).add({
@@ -370,10 +366,10 @@ export class FriendSharedlistService {
                                         }).then(res => {}).catch(err => console.log(err));
                                     });
                                 }
-                                message = 'Created list successfully !';
+                                message = 'Listcreated';
                                 callback(message);
                             }).catch((mess) => {
-                                message = 'Create failed';
+                                message = 'Failcreatelist';
                                 callback(message);
                             });
                         }
@@ -387,14 +383,14 @@ export class FriendSharedlistService {
                             self.afs.collection(`users/${mess.uid}/MemberShareList`).add({
                                 Accept: false,
                                 AdminId: self.auth.getUserId(),
-                                ShareListid: _mess.id
+                                ShareListId: _mess.id
                             });
                         });
                     }
-                    message = 'Created list successfully !';
+                    message = 'Listcreated';
                     callback(message);
                 }).catch((mess) => {
-                    message = 'Create failed';
+                    message = 'Failcreatelist';
                     callback(message);
                 });
             }

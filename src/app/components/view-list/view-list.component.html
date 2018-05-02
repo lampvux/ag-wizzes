@@ -2,14 +2,14 @@
     <div class="main">
         <div class="section">
             <div class="container">
-                <h3>Gift Details : {{title}}</h3>
+                <h3> {{ 'Giftdetails' | translate }} : {{title}}</h3>
                     <div class="form-group">
                         <label for=""></label>
                     </div>
                     <div class="row">
 
                         <div class="col-md-3 col-sm-5" >
-                            <h6>Gift Images</h6>
+                            <h6> {{ 'Images' | translate }}</h6>
                             <div class="fileinput text-center">
                                 <div *ngFor="let item of imagesUrls">
                                     <img src="{{item}}" width="100%" height="135px" alt="giftimage">
@@ -20,48 +20,48 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group pull-left">
-                                        <h6>Title: {{title}}</h6>
+                                        <h6> {{ 'Title' | translate }}: {{title}}</h6>
                                     </div>                                                                      
                                 </div>  
                                 <div class="col-md-6">
                                     <div class="form-group pull-right">
-                                        <h6>Category : {{checked_cat}}</h6>
+                                        <h6> {{ 'Category' | translate }} : {{checked_cat}}</h6>
                                     </div>
                                 </div>                       
                             </div>
                             <div class="row price-row form-group">
                                 <div class="col-md-6">
-                                    <h6>Price : {{price}}
-                                    <i class="fa fa-euro"></i>
+                                    <h6> {{ 'Price' | translate }} : {{price}}
+                                    <i>{{this.auth.currency}}</i>
                                     </h6>                                    
                                 </div>
                                 <div class="col-md-6" *ngIf="isblocked">
-                                    <h6>Blocked Time Remaining : 
+                                    <h6>{{ 'Blocktimeremain' | translate }}  : 
                                     </h6>
                                     <p>{{expiry}}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class=" col-md-12 form-group">
-                                    <h6>Description:                                        
+                                    <h6>{{ 'Descriptions' | translate }}:                                        
                                     </h6>
                                     <p>{{description}}</p>
                                 </div>
                             </div>
                             <h3>
-                                <strong> Where to find it</strong>
+                                <strong> {{ 'Wheretofind' | translate }}</strong>
                             </h3>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <h6> - Website :</h6>
+                                    <h6> - {{ 'Website' | translate }} :</h6>
                                    <label for="">{{website}}</label>
                                 </div>
                                 <div class="form-group">
-                                    <h6> - Shop Address :</h6>
+                                    <h6> - {{ 'Shopaddress' | translate }} :</h6>
                                     <label for="">{{address}}</label>
                                       </div>
                                 <div class="form-group">
-                                    <h6> - Other Infos :</h6>
+                                    <h6> -{{ 'Otherinfos' | translate }} :</h6>
                                     <label for="">{{others}}</label> </div>
                             </div>
                             <div class="map form-group">
@@ -77,7 +77,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <h6> Expiry Date
+                                <h6> {{ 'Expirydate' | translate }}
                                     <span class="icon-danger">*</span>
                                 </h6>
                                 <input type="date" readonly class="form-control border-input"  [(ngModel)]="expy"   name="expy" placeholder="others infos...">
@@ -90,7 +90,7 @@
                             <div class="alert alert-info " data-notify="container">
                                 <div class="alert-wrapper text-center">
                                     <div class="message">
-                                        {{ giftMess }}
+                                        {{ giftMess | translate }}
                                     </div>
                                 </div>
                             </div>
@@ -99,30 +99,30 @@
                     
                     <div class="row buttons-row">                        
                         <div class="col-md-4 col-sm-4">                            
-                            <a class="btn btn-info btn-block btn-round" (click)="open(small, 'lg')">Doubts</a>
+                            <a class="btn btn-info btn-block btn-round" (click)="open(small, 'lg')">{{ 'Doubts' | translate }}</a>
                             <ng-template #small let-c="close" let-d="dismiss">
                                 <div class="no-title modal-header no-border-header">
-                                     <h4 class="modal-title">Doubts</h4>
+                                     <h4 class="modal-title">{{ 'Doubts' | translate }}</h4>
                                     <button type="button" class="close" (click)="d('Cross click')">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body text-left">
                                     <div class="form-group ">
-                                        <label>Message</label>
+                                        <label>{{ 'Message' | translate }}</label>
                                         <textarea name="doubtscommend" class="form-control" [(ngModel)]="doubtscommend" id="doubtscommend" cols="30" rows="10"></textarea>
                                     </div> 
                                     <ng-container *ngIf="errmess">
                                         <div class="alert alert-info " data-notify="container">
                                             <div class="alert-wrapper text-left">
                                                 <div class="message">
-                                                    {{ errmess }}
+                                                    {{ errmess | translate }}
                                                 </div>
                                             </div>                                    
                                         </div>
                                     </ng-container>
                                     <div class="form-group">
-                                        <button class="btn btn-outline-info btn-block btn-round" (click)="sendDoubts()" >Send Anonymous Doubts</button>
+                                        <button class="btn btn-outline-info btn-block btn-round" (click)="sendDoubts()" >{{ 'Senddoubts' | translate }}</button>
                                     </div>                                  
                                     <div class="row">
                                         <div class="col-md-12">
@@ -131,7 +131,7 @@
                                                     <ng-template ngbPanelTitle>
                                                         <h5 class="mb-0 panel-title">
                                                             <a class="collapsed">
-                                                               <strong> Other Doubts</strong>
+                                                               <strong> {{ 'Otherdoubt' | translate }}</strong>
                                                                 <i class="nc-icon nc-minimal-down"></i>
                                                             </a>
                                                         </h5>
@@ -150,59 +150,59 @@
                                     
                                 </div>
                                 <div class="modal-footer">                                   
-                                    <button type="button" class="btn btn-default btn-link" (click)="c('Close click')">Close</button>
+                                    <button type="button" class="btn btn-default btn-link" (click)="c('Close click')">{{ 'Close' | translate }}</button>
                                 </div>
                             </ng-template>
                         </div>
                          <ng-container *ngIf="isblocked; else elseTemplate">
                             <div class="col-md-4 col-sm-4">
-                                <a class="btn btn-outline-default btn-block btn-round" (click)="unblockGift()">Unblock Gift</a>
+                                <a class="btn btn-outline-default btn-block btn-round" (click)="unblockGift()">{{ 'Unblockgift' | translate }}</a>
                             </div>
                             <div class="col-md-4 col-sm-4">
-                                <button class="btn btn-success btn-block btn-round" (click)="!isblocked||confirmGiftBought()">Confirm Gift Bought</button>
+                                <button class="btn btn-success btn-block btn-round" (click)="!isblocked||confirmGiftBought()">{{ 'Confirmgiftbuy' | translate }}</button>
                             </div>
                         </ng-container>
                         <ng-template #elseTemplate>
                             <div class="col-md-8 col-sm-4" *ngIf="!blockedbyanother">
-                                <a class="btn btn-outline-success btn-block btn-round" (click)="open(small2, 'lg')">Block Gift Temporarily</a>
+                                <a class="btn btn-outline-success btn-block btn-round" (click)="open(small2, 'lg')">{{ 'Blockgift' | translate }}</a>
                                 <ng-template #small2 let-c="close" let-d="dismiss">
                                     <div class="no-title modal-header no-border-header">
-                                        <h4 class="modal-title">Block Item Temporarily</h4>
+                                        <h4 class="modal-title">{{ 'Blockgift' | translate }}</h4>
                                         <button type="button" class="close" (click)="d('close')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body text-center">
                                         <div class="form-group">
-                                            <p>During the time that you block these item, you will be the only User able to buy there item.</p>
+                                            <p>{{ 'Blockmessagecontent' | translate }}</p>
                                         </div> 
                                         <div class="form-group">
-                                            <label for="">Select how many hours you will block there item</label>
+                                            <label for="">{{ 'Blockhour' | translate }}</label>
                                             <select name="timeblock" id="timeblock" [(ngModel)]="timeblock" class="form-control">
-                                                <option value="1">1 Hour</option>
-                                                <option value="2">2 Hours</option>
-                                                <option value="6">6 Hours</option>
-                                                <option value="12">12 Hours</option>
-                                                <option value="24">24 Hours</option>
+                                                <option value="1">1 {{ 'Hour' | translate }}</option>
+                                                <option value="2">2 {{ 'Hour' | translate }}s</option>
+                                                <option value="6">6 {{ 'Hour' | translate }}s</option>
+                                                <option value="12">12 {{ 'Hour' | translate }}s</option>
+                                                <option value="24">24 {{ 'Hour' | translate }}s</option>
                                             </select>
                                         </div>                                     
                                         <div class="form-group">
-                                            <p>Remember, during these time you will not able to block any other items from the same User</p>
+                                            <!-- <p>Remember, during these time you will not able to block any other items from the same User</p> -->
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <div class="left-side">
-                                            <button type="button" class="btn btn-default btn-link" (click)="c('close')">Never mind</button>
+                                            <button type="button" class="btn btn-default btn-link" (click)="c('close')">{{ 'Nevermind' | translate }}</button>
                                         </div>
                                         <div class="divider"></div>
                                         <div class="right-side">
-                                            <button type="button" class="btn btn-danger btn-link" (click)="c('blockgift')" >Confirm Block Gift Temporarily</button>
+                                            <button type="button" class="btn btn-danger btn-link" (click)="c('blockgift')" >{{ 'ConfirmBlock' | translate }}</button>
                                         </div>
                                     </div>
                                 </ng-template>
                             </div>
                             <div *ngIf="blockedbyanother" class="col-md-8 col-sm-4">
-                                <a class="btn btn-outline-default btn-block btn-round" >HIS ITEM HAVE BEEN BLOCKED</a>
+                                <a class="btn btn-outline-default btn-block btn-round" >{{ 'Blockeditem' | translate }}</a>
                                 
                             </div>
                         </ng-template>
@@ -218,14 +218,9 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#">{{ 'Home' | translate }}</a>
                     </li>
-                    <li>
-                        <a href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/view-list/mmWGGekSeGumoDoXyGGy']">Licenses</a>
-                    </li>
+                    
                 </ul>
             </nav>
             <div class="credits ml-auto">

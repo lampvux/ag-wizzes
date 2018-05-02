@@ -41,7 +41,7 @@ export class ViewListComponent implements OnInit, OnDestroy {
     ];
     constructor(
         private Listservice: ListsService,
-        private auth: AuthService,
+        public auth: AuthService,
         private mapsAPILoader: MapsAPILoader,
         private ngZone: NgZone,
         private route: ActivatedRoute,
@@ -54,7 +54,7 @@ export class ViewListComponent implements OnInit, OnDestroy {
     sendDoubts() {
         const self = this;
         if (!this.doubtscommend) {
-            this.errmess = 'Please say something !';
+            this.errmess = 'Saysomething';
         } else {
             this.Listservice.sendDoubts(this.id, this.uid, this.doubtscommend , function(res) {
                 self.errmess = res;

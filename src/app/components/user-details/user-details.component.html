@@ -25,29 +25,29 @@
                             <div class="card-footer text-center">
                                 <ng-container *ngIf="friendstat; else nofriend">
                                     <button class="btn btn-icon btn-outline-success btn-border btn-round" *ngIf="friendstat">
-                                        <i class="fa fa-check"></i> Friend</button>
+                                        <i class="fa fa-check"></i> {{ 'Friend' | translate }}</button>
                                 </ng-container>
                                 <ng-template #nofriend>
                                     <ng-container *ngIf="request; else norequest">
                                         <button (click)="cancelRequest()" class="btn btn-icon btn-outline-default btn-border btn-round" >
-                                            <i class="fa fa-check"></i> Friend Request Sent</button>
+                                            <i class="fa fa-check"></i>{{ 'Friendrequestsend' | translate }}</button>
                                     </ng-container>
                                     <ng-template #norequest>
                                         <button (click)="addFriend()" ng-disabled="isDisabled" class="btn btn-icon btn-outline-info btn-border btn-round" >
-                                            <i class="fa fa-plus"></i> Add Friend</button>
+                                            <i class="fa fa-plus"></i>{{ 'Addfriend' | translate }}</button>
                                     </ng-template>
                                 </ng-template>      
                             </div>                            
                         </div>
                     </div>
-                    <a [routerLink]="[ 'lists' ]" *ngIf=" (friendstat && friendseelist)" class="container btn btn-outline-success btn-icon"><i class="fa fa-list-ol"></i>{{Name}} Lists</a>
+                    <a [routerLink]="[ 'lists' ]" *ngIf=" (friendstat && friendseelist)" class="container btn btn-outline-success btn-icon"><i class="fa fa-list-ol"></i>{{Name}} {{ 'Lists' | translate }}</a>
 
-                    <ngb-accordion #acc="ngbAccordion" *ngIf=" (friendstat && friendseelist)" >
+                    <!-- <ngb-accordion #acc="ngbAccordion" *ngIf=" (friendstat && friendseelist)" >
                         <ngb-panel id="config-panel-one">
                             <ng-template ngbPanelTitle>
                                 <h5 class="mb-0 panel-title">
                                     <a class="collapsed">
-                                        Share Lists
+                                         {{ 'Sharelists' | translate }}
                                         <i class="nc-icon nc-minimal-down"></i>
                                     </a>
                                 </h5>
@@ -56,7 +56,7 @@
                                
                             </ng-template>
                         </ngb-panel>
-                    </ngb-accordion>
+                    </ngb-accordion> -->
                     <!-- end card -->
                 </div>
 
@@ -70,14 +70,9 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#"> {{ 'Home' | translate }}</a>
                     </li>
-                    <li>
-                        <a href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a href="#">Licenses</a>
-                    </li>
+                    
                 </ul>
             </nav>
             <div class="credits ml-auto">

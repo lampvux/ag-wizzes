@@ -16,13 +16,13 @@
               <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                   <label>
-                    <b> Name</b>*</label>
+                    <b> {{ 'Name' | translate }}</b>*</label>
                   <input type="text" class="form-control border-input" id="displayName" required [(ngModel)]="displayName" #name="ngModel"
-                    value="{{displayName}}" name="displayName" placeholder=" Name">
+                    value="{{displayName}}" name="displayName" placeholder="{{ 'Name' | translate }}">
                   <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
 
                     <div *ngIf="name.errors.required">
-                      Name is required.
+                      {{'Namerequired' | translate}}
                     </div>
                   </div>
                 </div>
@@ -31,12 +31,12 @@
               <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                   <label>
-                    <b>Email</b>*</label>
+                    <b>{{ 'Email' | translate }}</b>*</label>
                   <input type="email" class="form-control border-input" required [(ngModel)]="email" #emails="ngModel" value="{{email}}" name="email"
-                    placeholder="Last Name">
+                    placeholder="{{ 'Email' | translate }}">
                   <div *ngIf="emails.invalid && (emails.dirty || emails.touched)" class="alert alert-danger">
                     <div *ngIf="emails.errors.required">
-                      Email is required.
+                      {{'Emailrequired' | translate}}
                     </div>
 
                   </div>
@@ -47,16 +47,16 @@
               <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                   <label>
-                    <b> Country</b>
+                    <b> {{ 'Country' | translate }}</b>
                   </label>
-                  <input type="text" class="form-control border-input" [(ngModel)]="country" value="{{country}}" name="country" placeholder=" Name">
+                  <input type="text" class="form-control border-input" [(ngModel)]="country" value="{{country}}" name="country" placeholder="{{ 'Country' | translate }}">
                 </div>
               </div>
 
               <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                   <label>
-                    <b>Sex</b>
+                    <b>{{ 'Sex' | translate }}</b>
                   </label>
                   <angular2-multiselect [data]="dropdownList1" [(ngModel)]="sex" name="sex" [settings]="dropdownSettings1" (onSelect)="onItemSelect($event)">
                   </angular2-multiselect>
@@ -67,7 +67,7 @@
               <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label>
-                        <b> Birth</b></label>
+                        <b> {{ 'Birth' | translate }}</b></label>
                     <div class='input-group date'>
                         <input class="form-control" placeholder="birth"  name="birth" [(ngModel)]="birth" #births="ngModel" ngbDatepicker
                         #d="ngbDatepicker" (click)="d.toggle()">
@@ -84,7 +84,7 @@
               <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                   <label>
-                    <b>Telephone</b>
+                    <b>{{ 'Telephone' | translate }}</b>
                   </label>
                   <input type="text" class="form-control border-input" [(ngModel)]="telephone" value="{{telephone}}" name="telephone" placeholder="Phone">
                 </div>
@@ -94,14 +94,14 @@
             <div class="alert alert-info " data-notify="container" *ngIf="message">
                     <div class="alert-wrapper text-center">
                         <div class="message">
-                            {{ message }}
+                            {{ message | translate}}
                         </div>
                     </div>
             
                 </div>
             
             <div class="text-center">
-              <button type="submit" (click)="updateUserData()" class="btn btn-wd btn-info btn-round">Save</button>
+              <button type="submit" (click)="updateUserData()" class="btn btn-wd btn-info btn-round">{{ 'Save' | translate }}</button>
             </div>
           </form>
 
@@ -116,14 +116,9 @@
       <nav class="footer-nav">
         <ul>
           <li>
-            <a href="#">Home</a>
+            <a href="#">{{ 'Home' | translate }}</a>
           </li>
-          <li>
-            <a href="#">Blog</a>
-          </li>
-          <li>
-            <a href="#">Licenses</a>
-          </li>
+         
         </ul>
       </nav>
       <div class="credits ml-auto">

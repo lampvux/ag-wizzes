@@ -64,7 +64,7 @@ export class ListDetailsComponent implements OnInit, OnDestroy {
     closeResult: string;
     constructor(
         private Listservice: ListsService,
-        private auth: AuthService,
+        public auth: AuthService,
         private cateService: CategoryService,
         private imguploadservice: ImageUploadService,
         private mapsAPILoader: MapsAPILoader,
@@ -177,7 +177,7 @@ export class ListDetailsComponent implements OnInit, OnDestroy {
                    this.description, this.website, this.address, this.lat, this.lng, this.others, this.expiry, null, null);
             }
         } else {
-            this.error = 'Failed to create new list';
+            this.error = 'Failcreatelist';
         }
     }
     /** delete list */

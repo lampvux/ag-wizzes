@@ -3,7 +3,7 @@
     <div class="no-title modal-header no-border-header">
         <div class="modal-title">
             <h4 class="modal-title">
-                System Notification
+                 {{ 'Systemnotification' | translate }}
                 <button type="button" class="close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -23,7 +23,7 @@
     <div class="no-title modal-header no-border-header">
         <div class="modal-title">
             <h4 class="modal-title">
-                Gift Doubt
+                 {{ 'Doubts' | translate }}
                 <button type="button" class="close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -33,22 +33,22 @@
     <div class="modal-body text-left">
         <form action="" name="doubtsanswer">
             <div class="form-group">
-                <label for="">Question: {{doubtQuestion}}</label>
+                <label for="">{{ 'Question' | translate }}: {{doubtQuestion}}</label>
                 
             </div>
             <div class="form-group">
-                <label for="">Answer:</label>
+                <label for="">{{ 'Answer' | translate }}:</label>
                 <textarea name="answerdoubts" [(ngModel)]="doubtsanswer" class="form-control" id="" cols="30" rows="10"></textarea>
             </div>
         </form>
     </div>
     <div class="modal-footer">
         <div class="left-side">
-            <button type="button" class="btn btn-default btn-link" (click)="c('Close click')">Cancel</button>
+            <button type="button" class="btn btn-default btn-link" (click)="c('Close click')">{{ 'Cancel' | translate }}</button>
         </div>
         <div class="divider"></div>
         <div class="right-side">
-            <button type="button" class="btn btn-success btn-link" (click)="answerDoubt()">Send</button>
+            <button type="button" class="btn btn-success btn-link" (click)="answerDoubt()">{{ 'Send' | translate }}</button>
         </div>
     </div>
 </ng-template>
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="modal-body text-center">
-        <h5>{{Tiele}}</h5>
+        <h5>{{Title}}</h5>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default btn-link" (click)="c('Close click')">OK</button>
@@ -74,7 +74,7 @@
     <div class="no-title modal-header no-border-header">
         <div class="modal-title">
             <h4 class="modal-title">
-                Surveys
+                {{ 'Surveys' | translate }}
                 <button type="button" class="close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -89,11 +89,11 @@
     </div>
     <div class="modal-footer">
         <div class="left-side">
-            <button type="button" class="btn btn-default btn-link" (click)="c('Close click')">Never mind</button>
+            <button type="button" class="btn btn-default btn-link" (click)="c('Close click')">{{ 'Nevermind' | translate }}</button>
         </div>
         <div class="divider"></div>
         <div class="right-side">
-            <button type="button" class="btn btn-success btn-link" (click)="sendSurveys()">Send</button>
+            <button type="button" class="btn btn-success btn-link" (click)="sendSurveys()">{{ 'Send' | translate }}</button>
         </div>
     </div>
 </ng-template>
@@ -101,7 +101,7 @@
     <div class="no-title modal-header no-border-header">
         <div class="modal-title">
             <h4 class="modal-title">
-                New Share List Invite
+                 {{ 'Sharelistinvite' | translate }}
                 <button type="button" class="close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -111,18 +111,18 @@
     <div class="modal-body text-center">
         <div class="form-group">
             <h4 class="text-center">{{Title}}</h4>
-            
-            <a class="btn btn-outline-primary" [routerLink]="[ '/share-list-details', IdGift, IdFriend ]" role="button" (click)="c('close')" >View Share List</a>
+        <br>
+            <a class="btn btn-outline-primary" [routerLink]="[ '/share-list-details', IdGift, IdFriend ]" role="button" (click)="c('close')" > {{ 'Viewsharelist' | translate }}</a>
             
         </div>
     </div>
     <div class="modal-footer">
         <div class="left-side">
-            <button type="button" class="btn btn-default btn-link" (click)="c('denysharelist')">Deny</button>
+            <button type="button" class="btn btn-default btn-link" (click)="c('denysharelist')"> {{ 'Deny' | translate }}</button>
         </div>
         <div class="divider"></div>
         <div class="right-side">
-            <button type="button" class="btn btn-success btn-link" (click)="c('acceptsharelist')">Accept</button>
+            <button type="button" class="btn btn-success btn-link" (click)="c('acceptsharelist')"> {{ 'Accept' | translate }}</button>
         </div>
     </div>
 </ng-template>
@@ -130,7 +130,7 @@
     <div class="no-title modal-header no-border-header">
         <div class="modal-title">
             <h4 class="modal-title">
-                New Friend Request
+                 {{ 'Newfriendrequest' | translate }}
                 <button type="button" class="close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -139,7 +139,10 @@
     </div>
     <div class="modal-body text-center">
         <div class="form-group">
-            <h4 class="text-center">{{Title}}</h4>
+            <h4 class="text-center">{{Title | translate}}</h4>
+        <br>
+            <a class="btn btn-primary"  [routerLink]="['/friend-requests']">{{ 'Seerequest' | translate }}</a>
+            
         </div>
     </div>
     <div class="modal-footer">        
@@ -150,7 +153,7 @@
     <div class="no-title modal-header no-border-header">
         <div class="modal-title">
             <h4 class="modal-title">
-                Surveys
+                
                 <button type="button" class="close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -159,11 +162,11 @@
     </div>
     <div class="modal-body text-center">
         <div class="form-group">
-            <label for="">Question: {{doubtQuestion}}</label>
+            <label for="">{{ 'Question' | translate }}: {{doubtQuestion}}</label>
         
         </div>
         <div class="form-group">
-            <label for="">Answer:</label>
+            <label for="">{{ 'Answer' | translate }}:</label>
         </div>
     </div>
     <div class="modal-footer">        

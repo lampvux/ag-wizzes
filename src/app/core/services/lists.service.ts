@@ -252,9 +252,9 @@ export class ListsService {
                 title: 'New Doubt in your gift',
                 message: 'An User sent you a doubt on your Gift'
             }); */
-            callback('Your doubts created !');
+            callback('Doubtcreated');
         }).catch(err => {
-            callback('Error when create your doubts !');
+            callback('Doubterror');
         });
     }
     answerDoubt(listId, doubtId,  message) {
@@ -286,9 +286,9 @@ export class ListsService {
         // tslint:disable-next-line:max-line-length
         giftRef.update({ IdUserBlock: this.auth.getUserId(), OpenTimeBlock: createdate, ExpiryTimeBlock: timeblock + ':00:00' }).then(ref => {
             this.afs.collection(`users/${this.auth.getUserId()}/Block_GIFT`).add({ IdGift: listId, IdUser: friend_uid})
-            callback('Blocked Gift!');
+            callback('Blockedgift');
         }).catch(err => {
-            callback('Failed to blocked gift !');
+            callback('Failblockedgift');
         });
     }
     unblockGift(listId, uid, callback) {
@@ -304,9 +304,9 @@ export class ListsService {
             if (onlygift) {
                 this.afs.doc(`users/${this.auth.getUserId()}/Block_GIFT/${onlygift[0].id}`).delete().then(aa => {
                     giftRef.update({ IdUserBlock: '', OpenTimeBlock: '', ExpiryTimeBlock: '' }).then(ref => {
-                        callback('Unblocked Gift!');
+                        callback('Unblocked');
                     }).catch(err => {
-                        callback('Failed to unblocked gift !');
+                        callback('Failunblockedgift');
                     });
                 }).catch(ee => {
                 });
@@ -316,15 +316,15 @@ export class ListsService {
     deletelist(id, adminid, sharelistid) {
         if (!(adminid && sharelistid)) {
             this.afs.collection<Listitems>(`users/${this.auth.getUserId()}/MyList`).doc<Listitems>(`${id}`).delete().then(function () {
-                 return 'Deleted Successfully !';
+                 return 'Deletelist';
              }).catch(function (error) {
-                return 'Failed to delete !';
+                return 'Faildeletelist';
              });
         } else {
             this.afs.doc<Listitems>(`users/${adminid}/ShareList/${sharelistid}/MyList/${id}`).delete().then(function () {
-                return 'Deleted Successfully !';
+                return 'Deletelist';
             }).catch(function (error) {
-                return 'Failed to delete !';
+                return 'Faildeletelist';
             });
         }
     }

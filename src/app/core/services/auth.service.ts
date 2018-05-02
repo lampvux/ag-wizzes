@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { NotifyService } from './notify.service';
+
 
 import { Observable } from 'rxjs/Observable';
 import { switchMap } from 'rxjs/operators';
@@ -21,10 +21,11 @@ export class AuthService {
     url: any;
     error: string;
     message;
+    currency;
     constructor(private afAuth: AngularFireAuth,
         private afs: AngularFirestore,
         private router: Router,
-        public notify: NotifyService) {
+) {
 
         this.user = this.afAuth.authState
             .switchMap((user) => {
@@ -35,6 +36,7 @@ export class AuthService {
                         this.name = us.Name;
                         this.email = us.Email;
                         this.url = us.Url;
+                        this.currency = us.Currency;
                     });
                     return this.afs.doc(`users/${user.uid}`).valueChanges();
                 } else {
@@ -60,6 +62,7 @@ export class AuthService {
         this.name = val.Name;
         this.email = val.Email;
         this.url = val.Url;
+        this.currency = val.Currency;
     }
     setSessionUser() {
         this.afAuth.authState
@@ -97,7 +100,7 @@ export class AuthService {
     private oAuthLogin(provider: firebase.auth.AuthProvider) {
         return this.afAuth.auth.signInWithPopup(provider)
             .then((credential) => {
-                this.notify.update('Welcome to Wizzes!!!', 'success');
+
                 if (!credential.additionalUserInfo.isNewUser) {
                     this.updateUserDataAfterlogin(credential.user);
                     this.setSessionUser();
@@ -119,7 +122,7 @@ export class AuthService {
     loginWithEmail(email, password) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then((user) => {
-                this.notify.update('Welcome to Wizzes!!!', 'success');
+
                  this.updateUserDataAfterlogin(user); // if using firestore
                 this.setSessionUser();
                 this.afterSignIn();
@@ -134,7 +137,7 @@ export class AuthService {
     emailSignUp(email: string, password: string) {
         return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
             .then((user) => {
-                this.notify.update('Welcome to Wizzes!!!', 'success');
+
                 return this.setUserData(user); //  firestore
             })
             .catch((error) => {
@@ -148,12 +151,13 @@ export class AuthService {
         const fbAuth = firebase.auth();
 
         return fbAuth.sendPasswordResetEmail(email)
-            .then(() => this.notify.update('Password update email sent', 'info'))
+            .then(() => {})
             .catch((error) => {
                 this.error = error.message;
                 this.handleError(error);
             });
     }
+    
 
     signOut() {
         sessionStorage.removeItem('id');
@@ -170,7 +174,7 @@ export class AuthService {
     }
     // If error, console log and notify user
     private handleError(error: Error) {
-        this.notify.update(error.message, 'error');
+
     }
 
     getUser(id) {
@@ -184,7 +188,7 @@ export class AuthService {
             Name: (user.displayName !== null && user.displayName !== 'undefined' && user.displayName !== '')
                 ? user.displayName : ''
         };
-        this.notify.update('Profile Updated', 'success');
+
         return userRef.update(data);
     }
     // update user data to firestore after succesful update
@@ -202,7 +206,7 @@ export class AuthService {
             Telephone: (user.telephone && user.telephone  !== null && user.telephone !== 'undefined' &&  user.telephone !== '' )
             ? user.telephone : ''
         };
-        this.notify.update('Profile Updated', 'success');
+
 
         return userRef.update(data);
     }
@@ -227,7 +231,7 @@ export class AuthService {
             Language: (user.Language)   ? user.Language : '' ,
             PushNotifications: (user.PushNotifications)  ? true : false
         };
-        this.notify.update('Profile Updated', 'success');
+
         return userRef.set(data);
     }
 }

@@ -116,7 +116,7 @@ export class NewSharedListComponent implements OnInit, OnDestroy {
                 self.router.navigate(['/my-share-list']);
             });
         } else {
-            this.error = 'Failed to create share list ! \n Title and Expiry Date are required !' ;
+            this.error = 'Failtocreatelist' ;
         }
     }
 

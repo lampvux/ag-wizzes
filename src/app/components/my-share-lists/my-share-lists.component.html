@@ -2,10 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-center">
-                <h2 class="title">My Share Lists 
+                <h2 class="title">{{ 'Mysharelist' | translate }}
                 </h2>
                 <a class="btn btn-success btn-rotate btn-round pull-right" [routerLink]="['/new-share-list']">
-                    <i class="nc-icon nc-simple-add "></i> New Share List</a>
+                    <i class="nc-icon nc-simple-add "></i>{{ 'Newsharelist' | translate }}</a>
                 <h5 class="description">
                 </h5>
             </div>
@@ -13,7 +13,7 @@
         <div class="space-top"></div>
         <div class="row">
             <ngb-tabset type="pills" class="nav-pills-danger nav-justified col-md-12">
-                <ngb-tab title="Lastest" class="col-md-4">
+                <ngb-tab title="{{ 'Lastest' | translate }}" class="col-md-4">
                     <div class="row">
                         <ng-template ngbTabContent>
                             <div class="row" >
@@ -32,8 +32,8 @@
                                                     <div class="col-md-7">
                                                         <div class="card-body text-left">
                                                             <h3 class="card-title text-lowercase">{{list.Title}}</h3>
-                                                            <h6 class="card-category">Open : {{list.OpenDate}}</h6>
-                                                            <h6 class="card-category">Expiry : {{list.ExpiryDate}}</h6>
+                                                            <h6 class="card-category">{{ 'Open' | translate }} : {{list.OpenDate}}</h6>
+                                                            <h6 class="card-category">{{ 'Expiry' | translate }} : {{list.ExpiryDate}}</h6>
                                                             <p class="card-description">
                                                                 {{list.OtherInfo}}
                                                             </p>
@@ -51,7 +51,7 @@
                         </ng-template>
                     </div>
                 </ngb-tab>
-                <ngb-tab title="Title" class="col-md-4">
+                <ngb-tab title="{{ 'Title' | translate }}" class="col-md-4">
                     <ng-template ngbTabContent>
                         <div class="col-md-12">
                             <div class="card card-profile card-plain" >
@@ -68,8 +68,8 @@
                                             <div class="col-md-5">
                                                 <div class="card-body text-left">
                                                     <h4 class="card-title text-lowercase">{{list.Title}}</h4>
-                                                    <h6 class="card-category">Open : {{list.OpenDate}}</h6>
-                                                    <h6 class="card-category">Expiry : {{list.ExpiryDate}}</h6>
+                                                    <h6 class="card-category">{{ 'Open' | translate }} : {{list.OpenDate}}</h6>
+                                                    <h6 class="card-category">{{ 'Expiry' | translate }} : {{list.ExpiryDate}}</h6>
                                                     <p class="card-description">
                                                     {{list.OtherInfo}}
                                                     </p>
@@ -98,7 +98,7 @@
                         </div>
                     </ng-template>
                 </ngb-tab>
-                <ngb-tab title="Expiry Date" class="col-md-4">
+                <ngb-tab title="{{ 'Expirydate' | translate }}" class="col-md-4">
                     <ng-template ngbTabContent>
                         <div class="col-md-12">
                             <div class="card card-profile card-plain" >
@@ -115,8 +115,8 @@
                                             <div class="col-md-5">
                                                 <div class="card-body text-left">
                                                     <h4 class="card-title text-lowercase">{{list.Title}}</h4>
-                                                    <h6 class="card-category">Open : {{list.OpenDate}}</h6>
-                                                    <h6 class="card-category">Expiry : {{list.ExpiryDate}}</h6>
+                                                    <h6 class="card-category">{{ 'Open' | translate }} : {{list.OpenDate}}</h6>
+                                                    <h6 class="card-category">{{ 'Expiry' | translate }} : {{list.ExpiryDate}}</h6>
                                                     <p class="card-description">
                                                         {{list.OtherInfo}}
                                                     </p>

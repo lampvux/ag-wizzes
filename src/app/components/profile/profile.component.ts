@@ -80,12 +80,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
     updateUserData() {
         if (!(this.email && this.displayName)) {
-            this.message = 'Please fill in your Email and Name';
+            this.message = 'Fillemailname';
         } else {
             // tslint:disable-next-line:max-line-length
             this.pf.updateUserData(this.uid, this.email, this.photoUrl, this.displayName, this.country, (this.sex[0] ? this.sex[0]['itemName']: ''),
            this.birth['day'] + '/' + this.birth['month'] + '/' + this.birth['year'], this.telephone);
-           this.message = 'Profile Updated';
+           this.message = 'Profileupdated';
         }
 
 

@@ -27,6 +27,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { TrendyDetailsComponent } from './components/trendy-details/trendy-details.component';
 import { ViewListComponent } from './components/view-list/view-list.component';
 import { ListsComponent } from './components/lists/lists.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 
 const routes: Routes = [
@@ -52,6 +53,7 @@ const routes: Routes = [
     { path: 'list-details/:id', component: ListDetailsComponent, canActivate: [AuthGuard] },
     { path: 'list-details/:adminid/:id/:sharelistid', component: ListDetailsComponent, canActivate: [AuthGuard] },
 
+    { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'share-list-details/:id/:adminid', component: ShareListDetailsComponent, canActivate: [AuthGuard] },
     { path: 'user-details/:id', component: UserDetailsComponent, canActivate: [AuthGuard]},
     { path: 'user-details/:id/lists', component: ListsComponent, canActivate: [AuthGuard]},

@@ -38,6 +38,17 @@ import { ViewListComponent } from './view-list/view-list.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ListsComponent } from './lists/lists.component';
 import { NotificationDetailsComponent } from './notification-details/notification-details.component';
+/**translate */
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+/**http client */
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
+// AoT requires an exported function for factories
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -54,6 +65,13 @@ import { NotificationDetailsComponent } from './notification-details/notificatio
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: 'AIzaSyBxr_IlEZqDvGbK5yS9TCLyDk1lXLY4tvo',
       libraries: ['places']
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
     })
   ],
   declarations: [ComponentsComponent, LoginComponent,  MylistComponent,
@@ -72,6 +90,7 @@ import { NotificationDetailsComponent } from './notification-details/notificatio
        NotfoundComponent,
        ListsComponent,
        NotificationDetailsComponent,
+       ForgotPasswordComponent,
       ],
   exports: [ComponentsComponent],
   providers: [ ProfileService, AngularFireStorage ]

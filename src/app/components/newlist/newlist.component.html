@@ -2,46 +2,46 @@
   <div class="main">
     <div class="section">
       <div class="container">
-        <h3>Add List</h3>
+        <h3>{{ 'Addlist' | translate }}</h3>
         <form name="addlistform">
           <div class="row">
             <div class="col-md-3 col-sm-5">
-              <h6>Main Image</h6>
+              <h6>{{ 'Images' | translate }}</h6>
               <app-image-upload [multiple]="true"></app-image-upload>
               <!-- 
                 <h6>Categories</h6>
                 <tag-input [(ngModel)]='categories' name="categories" theme='regular-theme'></tag-input>
     -->
-              <b>You can upload maximum 5 images</b>
+              <b>{{ 'Maximageupload' | translate }}</b>
 
             </div>
 
             <div class="col-md-8 col-sm-7">
                 <div class="form-group">
-                    <h6>Title
+                    <h6>{{ 'Title' | translate }}
                     <span class="icon-danger">*</span>
                     </h6>
                     <input type="text" class="form-control border-input" required [(ngModel)]="title" #titles="ngModel" name="title" placeholder="Title of item">
                     <div *ngIf="titles.invalid && (titles.dirty || titles.touched)" class="alert alert-danger form-control">
 
                     <div *ngIf="titles.errors.required">
-                        Title is required.
+                         {{ 'Titlerequired' | translate }}
                     </div>
                     </div>
                 </div>
                 <div class="row price-row form-group">
                     <div class="col-md-6">
-                        <h6>Price
+                        <h6>{{ 'Price' | translate }}
                         </h6>
                         <div class="input-group border-input">
-                            <input type="text" value="" placeholder="enter price" [(ngModel)]="price" #prices="ngModel" name="price" class="form-control border-input">
+                            <input type="text" value="" placeholder="{{ 'Price' | translate }}" [(ngModel)]="price" #prices="ngModel" name="price" class="form-control border-input">
                             <span class="input-group-addon">
-                            <i class="fa fa-euro"></i>
+                            <i>{{this.auth.currency}}</i>
                             </span>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6>Category</h6>
+                        <h6>{{ 'Category' | translate }}</h6>
                         <div class="form-group">
                             <angular2-multiselect [data]="dropdownList1" #categorys="ngModel" [(ngModel)]="category" name="category" [settings]="dropdownSettings1" >
                             </angular2-multiselect>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="">
                     <div class="form-group">
-                        <h6>Description
+                        <h6>{{ 'Description' | translate }}
                         <span class="icon-danger">*</span>
                         </h6>
                         <textarea class="form-control textarea-limited" placeholder="" rows="13" maxlength="150" required [(ngModel)]="description"
@@ -60,32 +60,32 @@
                         <div *ngIf="descriptions.invalid && (descriptions.dirty || descriptions.touched)" class="alert alert-danger form-control">
 
                             <div *ngIf="descriptions.errors.required">
-                            Description is required.
+                             {{ 'Descriptionrequired' | translate }}
                             </div>
                         </div>
                         <small>
-                            <span id="textarea-limited-message" class="pull-right">150 characters left</span>
+                           
                         </small>
                         </h5>
 
                     </div>
                 </div>
-                <h3> <strong> Where to find it</strong>
+                <h3> <strong> {{ 'Wheretofind' | translate }}</strong>
                 </h3>
                 <div class="col-sm-12">
                     <div class="form-group">
-                    <h6> - Website :</h6>
-                    <input type="text" class="form-control border-input" [(ngModel)]="website" #websites="ngModel" name="website" placeholder="enter the website here...">
+                    <h6> -  {{ 'Website' | translate }} :</h6>
+                    <input type="text" class="form-control border-input" [(ngModel)]="website" #websites="ngModel" name="website" placeholder=" {{ 'Websiteplaceholder' | translate }}...">
                     </div>
                     <div class="form-group">
-                    <h6> - Shop Address :</h6>
-                    <input type="text" class="form-control border-input" #search id="searchaddress" autocorrect="off" autocapitalize="off" spellcheck="off" [(ngModel)]="address" #addresss="ngModel" name="address" placeholder="enter the shop address here...">
+                    <h6> - {{ 'Shopaddress' | translate }} :</h6>
+                    <input type="text" class="form-control border-input" #search id="searchaddress" autocorrect="off" autocapitalize="off" spellcheck="off" [(ngModel)]="address" #addresss="ngModel" name="address" placeholder=" {{ 'Addressplaceholder' | translate }}...">
                    
                     
                     </div>
                     <div class="form-group">
-                    <h6> - Other Infos :</h6>
-                    <input type="text" class="form-control border-input" [(ngModel)]="others" #otherss="ngModel" name="others" placeholder="others infos...">
+                    <h6> - {{ 'Otherinfos' | translate }} :</h6>
+                    <input type="text" class="form-control border-input" [(ngModel)]="others" #otherss="ngModel" name="others" placeholder="{{ 'Otherinfos' | translate }}...">
                     </div>
                 </div>
                 <div class="map form-group">
@@ -102,10 +102,10 @@
                 </div>
                 
                 <div class="form-group">
-                    <h6> Expiry Date
+                    <h6> {{ 'Expirydate' | translate }}
                     <span class="icon-danger">*</span>
                     </h6>
-                    <input type="date"  class="form-control border-input" required [(ngModel)]="expiry" #expirys="ngModel" name="expiry" placeholder="others infos...">
+                    <input type="date"  class="form-control border-input" required [(ngModel)]="expiry" #expirys="ngModel" name="expiry" placeholder="...">
                 </div>
             </div>
             </div>
@@ -117,7 +117,7 @@
                 <div class="alert alert-danger " data-notify="container" >
                     <div class="alert-wrapper text-center">
                         <div class="message">
-                            {{message}}
+                            {{message | translate}}
                         </div>
                     </div>                
                 </div>
@@ -130,16 +130,16 @@
             </div>
             <div class="col-md-4 col-sm-4">
             <ng-container *ngIf="(sharelistid && adminsharelistid); else elseTemplate">
-              <a class="btn btn-outline-danger btn-block btn-round" [routerLink]="['/share-list-details', sharelistid, adminsharelistid ]">Cancel</a>
+              <a class="btn btn-outline-danger btn-block btn-round" [routerLink]="['/share-list-details', sharelistid, adminsharelistid ]">{{ 'Cancel' | translate }}</a>
             </ng-container>
             <ng-template #elseTemplate>
-              <a class="btn btn-outline-danger btn-block btn-round" [routerLink]="['/mylist']">Cancel</a>
+              <a class="btn btn-outline-danger btn-block btn-round" [routerLink]="['/mylist']">{{ 'Cancel' | translate }}</a>
                 
             </ng-template>
             </div>
             
             <div class="col-md-4 col-sm-4">
-              <button class="btn btn-primary btn-block btn-round" (click)="Pushupload()">Save & Publish </button>
+              <button class="btn btn-primary btn-block btn-round" (click)="Pushupload()">{{ 'Saveandpublish' | translate }} </button>
             </div>
           </div>
           
@@ -155,19 +155,14 @@
       <nav class="footer-nav">
         <ul>
           <li>
-            <a href="#">Home</a>
+            <a href="#">{{ 'Home' | translate }}</a>
           </li>
-          <li>
-            <a href="#">Blog</a>
-          </li>
-          <li>
-            <a href="#">Licenses</a>
-          </li>
+          
         </ul>
       </nav>
       <div class="credits ml-auto">
         <span class="copyright">
-          © {{data | date: 'yyyy'}}, made with
+          © , made with
           <i class="fa fa-heart heart"></i>
         </span>
       </div>

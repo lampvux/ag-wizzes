@@ -13,22 +13,22 @@
                         <ul class="notifications">
                             <li class="notification-item">
                                 
-                                <select name="language" id="language" data-toggle="tooltip" title="Language"  [(ngModel)]="language" class="form-control">
-                                    <option value="EN">ENGLISH</option>
-                                    <option value="FR">FRENCH</option>
-                                    <option value="ES">ESPAGNOL</option>
-                                    <option value="RU">RUSSIAN</option>
+                                <select name="language" id="language" data-toggle="tooltip" title="{{ 'Language' | translate }}"  [(ngModel)]="language" class="form-control">
+                                    <option value="EN">{{ 'English' | translate }}</option>
+                                    <option value="FR">{{ 'French' | translate }}</option>
+                                    <option value="ES">{{ 'Spainish' | translate }}</option>
+
                                 </select>
                             </li>
                             <li class="notification-item">
-                                <select name="currency" id="currency" data-toggle="tooltip" title="Currency"  [(ngModel)]="currency" class="form-control">
+                                <select name="currency" id="currency" data-toggle="tooltip" title="{{ 'Currency' | translate }}"  [(ngModel)]="currency" class="form-control">
                                     <option value="USD">USD</option>
                                     <option value="EUR">EUR</option>                                    
                                     
                                 </select>
                             </li>
                             <li class="notification-item">
-                                Push Notifications
+                                 {{ 'Pushnotification' | translate }}
                                 <bSwitch [switch-on-color]="'success'" 
                                 [switch-off-color]="'success'" 
                                 [(ngModel)]="push_notification" 
@@ -42,7 +42,7 @@
                                 
                             </li>
                             <li class="notification-item">
-                                Allow Friend to see my lists
+                                 {{ 'Allowfriendseelist' | translate }}
                                 <bSwitch [switch-on-color]="'success'" 
                                 [switch-off-color]="'success'"
                                  [(ngModel)]="friend_see_list"
@@ -57,7 +57,7 @@
                             </li>
                         </ul>
                         <div class="text-center">
-                            <button type="submit" (click)="updateSettings()" class="btn btn-wd btn-info btn-round">Save</button>
+                            <button type="submit" (click)="updateSettings()" class="btn btn-wd btn-info btn-round">{{ 'Save' | translate }}</button>
                         </div>
                         <div class="form-group">
                             <label for=""></label>
@@ -65,7 +65,7 @@
                                 <div class="alert alert-danger " data-notify="container">
                                     <div class="alert-wrapper text-center">
                                         <div class="message">
-                                            {{message}}
+                                            {{message | translate}}
                                         </div>
                                     </div>
                                 </div>
@@ -75,13 +75,13 @@
 
                 </div>
                 <div class="col-md-8 ml-auto mr-auto">
-                    <h3 class="text-center">Contact Us</h3>
+                    <h3 class="text-center">{{ 'Contactus' | translate }}</h3>
                     <div class="media media-post">                       
                         <div class="media-body">
                             <form action="" name="form-contact" class="text-center">
-                                <textarea class="form-control border-input" [(ngModel)]="contactMessage" name="contactMessage" placeholder="Write some nice stuff or anything you want to ask us..." rows="6"></textarea>
+                                <textarea class="form-control border-input" [(ngModel)]="contactMessage" name="contactMessage" placeholder="{{ 'Contactplaceholder' | translate }}" rows="6"></textarea>
                                 <div class="media-footer">
-                                    <a  (click)="sendContactMess()" class="btn btn-info btn-wd ">Send</a>
+                                    <a  (click)="sendContactMess()" class="btn btn-info btn-wd ">{{ 'Send' | translate }}</a>
                                 </div>
                             </form>
                         </div>                        
@@ -92,7 +92,7 @@
                             <div class="alert alert-warning " data-notify="container">
                                 <div class="alert-wrapper text-center">
                                     <div class="message">
-                                        {{contactmess}}
+                                        {{contactmess | translate}}
                                     </div>
                                 </div>
                             </div>
@@ -110,14 +110,9 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#">{{ 'Home' | translate }}</a>
                     </li>
-                    <li>
-                        <a href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a href="#">Licenses</a>
-                    </li>
+                   
                 </ul>
             </nav>
             <div class="credits ml-auto">

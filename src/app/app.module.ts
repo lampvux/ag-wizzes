@@ -21,7 +21,17 @@ import { AuthGuard } from './core/guard/auth.guard';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
-import { HttpClientModule } from '@angular/common/http';
+/**http client */
+import { HttpClientModule, HttpClient  } from '@angular/common/http';
+
+/**translate */
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -39,6 +49,13 @@ import { HttpClientModule } from '@angular/common/http';
     ComponentsModule,
     NgbModule.forRoot(),
     RouterModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
 
   ],
   providers: [AuthGuard],

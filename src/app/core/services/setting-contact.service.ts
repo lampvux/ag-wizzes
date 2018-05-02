@@ -27,9 +27,9 @@ export class SettingContactService {
             AllowFriendSeeLists: allow_lists
         };
         this.afs.doc(`users/${this.auth.getUserId()}`).update(data).then(res => {
-            callback('Settings Updated Successfully !');
+            callback('Settingupdated');
         }).catch( err => {
-            callback('Update Failed !');
+            callback('Failed');
         });
     }
     getSetting() {
@@ -56,9 +56,9 @@ export class SettingContactService {
             OpenDate: date_created
         };
         this.afs.doc(`admin/p1TcEZbkUH52NfbbGIWt/Messages/${this.auth.getUserId()}`).set(data).then(res => {
-            callback('Your message delivered, we will answer you soon !');
+            callback('Contactmess');
         }).catch( res => {
-            callback('Your message failed to deliver !');
+            callback('Failed');
         });
     }
 

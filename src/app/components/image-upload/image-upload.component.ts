@@ -98,7 +98,7 @@ export class ImageUploadComponent implements OnInit {
         if (this.multiple) {
             files = e.target.files;
             if (files.length > 5) {
-                this.error = 'You can only add  5 images maximum.';
+                this.error = 'Maximageupload';
             } else {
                 this.error = '';
 

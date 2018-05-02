@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-center">
-                <h2 class="title">Trendy Now
+                <h2 class="title">{{ 'Trendynow' | translate }}
                 </h2>
                 
                 <h5 class="description">
@@ -12,7 +12,7 @@
         <div class="space-top"></div>
         <div class="row">
             <ngb-tabset type="pills" class="nav-pills-danger nav-justified col-md-12">
-                <ngb-tab title="Lastest" class="col-md-4">
+                <ngb-tab title="{{ 'Lastest' | translate }}" class="col-md-4">
                     <div class="row">
                         <ng-template ngbTabContent>
                             <div class="row">
@@ -53,7 +53,7 @@
                         </ng-template>
                     </div>
                 </ngb-tab>
-                <ngb-tab title="Brand" class="col-md-4">
+                <ngb-tab title="{{ 'Brand' | translate }}" class="col-md-4">
                     <ng-template ngbTabContent>
                         <div class="col-md-12">
                             <div class="card card-profile card-plain">
@@ -103,7 +103,7 @@
                         </div>
                     </ng-template>
                 </ngb-tab>
-                <ngb-tab title="Country" class="col-md-4">
+                <ngb-tab title="{{ 'Country' | translate }}" class="col-md-4">
                     <ng-template ngbTabContent>
                         <div class="col-md-12">
                             <div class="card card-profile card-plain">
@@ -164,19 +164,14 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#">{{ 'Home' | translate }}</a>
                     </li>
-                    <li>
-                        <a href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a href="#">Licenses</a>
-                    </li>
+                    
                 </ul>
             </nav>
             <div class="credits ml-auto">
                 <span class="copyright">
-                    © {{data | date: 'yyyy'}}, made with
+                    © , made with
                     <i class="fa fa-heart heart"></i>
                 </span>
             </div>

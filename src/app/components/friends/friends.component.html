@@ -2,12 +2,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-center">
-                <h2 class="title">Friends                    
+                <h2 class="title">{{ 'Friends' | translate }}
                 </h2>
                 <a class="btn btn-info btn-rotate btn-round " [routerLink]="['/friend-requests']">
-                    <i class="nc-icon nc-simple-add "></i> Pending Friend Requests <span class="icon-danger">( {{friendRequestCount}} )</span></a>
+                    <i class="nc-icon nc-simple-add "></i> {{ 'Pendingfriendrequest' | translate }} <span class="icon-danger">( {{friendRequestCount}} )</span></a>
                 <a class="btn btn-success btn-rotate btn-round "  [routerLink]="['/add-friend']">
-                    <i class="nc-icon nc-simple-add "></i> Add Friend</a>                
+                    <i class="nc-icon nc-simple-add "></i> {{ 'Addfriend' | translate }}</a>                
             </div>
         </div>
 
@@ -42,19 +42,14 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#">{{ 'Home' | translate }}</a>
                     </li>
-                    <li>
-                        <a href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a href="#">Licenses</a>
-                    </li>
+                    
                 </ul>
             </nav>
             <div class="credits ml-auto">
                 <span class="copyright">
-                    © {{data | date: 'yyyy'}}, made with
+                    © , made with
                     <i class="fa fa-heart heart"></i>
                 </span>
             </div>

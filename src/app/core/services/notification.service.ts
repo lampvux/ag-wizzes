@@ -70,7 +70,7 @@ export class NotificationService {
     markReadNotifi(id, callback) {
         this.afs.doc(`users/${this.auth.getUserId()}/Notification/${id}`).update({Read: true})
         .then( () => {
-            callback('Mark read');
+            callback('Markread');
         }).catch( () => {
             callback('Failed');
         });
@@ -85,7 +85,7 @@ export class NotificationService {
         this.afs.doc(`users/${ this.auth.getUserId() }/Notification/${id}`).delete().then( () => {
             callback('Deleted');
         }).catch( () => {
-            callback('Error failed');
+            callback('Failed');
         });
     }
     getDateCreated() {

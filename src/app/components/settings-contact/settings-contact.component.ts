@@ -37,7 +37,7 @@ export class SettingsContactComponent implements OnInit, OnDestroy {
     sendContactMess() {
         const self = this;
         if (!this.contactmess) {
-            this.contactmess = 'Contact field can not be empty !';
+            this.contactmess = 'Contactempty';
         } else {
             this.settingservice.sendContact(this.contactMessage, function(res) {
                 self.contactmess = res;

@@ -12,10 +12,15 @@ export class MyShareListsComponent implements OnInit, OnDestroy {
     SharelistsTitle;
     SharelistsExpiry;
     constructor(private sharelistservice: FriendSharedlistService, private router: Router) {
+        
+    }
+
+    ngOnInit() {
         const self = this;
-        this.sharelistservice.getShareLists('OpenDate', 'desc', function(res) {
+        this.sharelistservice.getShareLists('OpenDate', 'desc', function (res) {
             res.subscribe(val => {
                 self.SharelistsTime = val;
+                console.log(val);
             });
         });
         this.sharelistservice.getShareLists('Title', 'desc', function (res) {
@@ -28,10 +33,6 @@ export class MyShareListsComponent implements OnInit, OnDestroy {
                 self.SharelistsExpiry = val;
             });
         });
-    }
-
-    ngOnInit() {
-
         const navbar = document.getElementsByTagName('app-navbar')[0];
         if (navbar.classList.contains('nav-up')) {
             navbar.classList.remove('nav-up');

@@ -69,9 +69,9 @@ export class FriendsService {
     }
     denyFriend(idrequest) {
         this.afs.doc(`users/${this.auth.getUserId()}`).collection('PendingRequest').doc(`${idrequest}`).delete().then(function () {
-            return 'Request Denied !';
+            return 'Requestdeny';
         }).catch(function (error) {
-            return 'Failed  !';
+            return 'Failed';
         });
     }
     acceptFriend(requestid, email, friendid, name, url, ) {
@@ -134,7 +134,7 @@ export class FriendsService {
             IdFriend: this.auth.getUserId(),
             IdGift: '',
             Read: false,
-            Title: 'You have new friend request \n check the friend request box !'
+            Title: 'Newfriendrequestmess'
         });
     }
 

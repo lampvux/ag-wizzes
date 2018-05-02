@@ -10,7 +10,7 @@
                         </div>
                         <div class="form-inline">
                             <a class="btn btn-info btn-rotate btn-round pull-left" [routerLink]="['/friends']">
-                                <i class="fa fa-arrow-circle-left "></i> Back
+                                <i class="fa fa-arrow-circle-left "></i> {{ 'Back' | translate }}
                             
                             </a>
                         </div>
@@ -22,7 +22,7 @@
                                 <input type="text" [(ngModel)]="searchText" name="searchinput" class="form-control input-xtreme no-border" placeholder="Find Friend" aria-describedby="basic-addon1">
                             </div>
                         </form>
-                        <h6 class="text-muted">Are you looking for a new friend ?</h6>
+                        <h6 class="text-muted">{{ 'Lookingforfriend' | translate }} </h6>
                         
                         <ul class="list-unstyled follows" *ngIf="allusers" style="max-height: 500px;overflow-y: auto;">
                             <li *ngFor="let item of allusers  | addFriendfilter : searchText">
@@ -52,7 +52,7 @@
                         </ul>
 
                         <div class="text-missing">
-                            <h5 class="text-muted">If you are not finding who you’re looking for try using an email address. </h5>
+                            <h5 class="text-muted">{{ 'Lookingforfriendemail' | translate }} </h5>
                         </div>
                     </div>
                 </div>
@@ -67,19 +67,14 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#">{{ 'Home' | translate }}</a>
                     </li>
-                    <li>
-                        <a href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a href="#">Licenses</a>
-                    </li>
+                    
                 </ul>
             </nav>
             <div class="credits ml-auto">
                 <span class="copyright">
-                    © {{data | date: 'yyyy'}}, made with
+                    ©, made with
                     <i class="fa fa-heart heart"></i>
                 </span>
             </div>

@@ -12,7 +12,7 @@
               <div class="alert alert-danger " data-notify="container" *ngIf="auth.error">
                 <div class="alert-wrapper">
                   <div class="message">
-                    {{ auth.error }}
+                    {{ auth.error | translate }}
                   </div>
                 </div>
 
@@ -22,25 +22,25 @@
               <div class="alert alert-danger " data-notify="container">
                 <div class="alert-wrapper">
                   <div class="message">
-                    {{auth.message}}
+                    {{auth.message | translate}}
                   </div>
                 </div>
               </div>
             </ng-template>
 
             <div class="card card-register">
-              <h3 class="" style="text-align:center;margin:0;">Welcome</h3>
+              <h3 class="" style="text-align:center;margin:0;">{{ 'Welcome' | translate }}</h3>
               <form class="register-form">
-                <label>Email</label>
-                <input type="email" [(ngModel)]="email" name="email" class="form-control no-border" placeholder="Email">
+                <label>{{ 'Email' | translate }}</label>
+                <input type="email" [(ngModel)]="email" name="email" class="form-control no-border" placeholder="{{ 'Email' | translate }}">
 
-                <label>Password</label>
-                <input type="password" [(ngModel)]="password" name="password" class="form-control no-border" placeholder="Password">
-                <button (click)="signInWithEmail()" class="btn btn-success btn-block btn-round">Login</button>
+                <label>{{ 'Password' | translate }}</label>
+                <input type="password" [(ngModel)]="password" name="password" class="form-control no-border" placeholder="{{ 'Password' | translate }}">
+                <button (click)="signInWithEmail()" class="btn btn-success btn-block btn-round">{{ 'Login' | translate }}</button>
               </form>
               <div class="forgot">
-                <a href="#" class="btn btn-link btn-info ">Forgot password?</a>
-                <a href="#" [routerLink]="['/signup']" class="btn btn-link btn-info ">Create account?</a>
+                <a href="#"  [routerLink]="['/forgot-password']" class="btn btn-link btn-info ">{{ 'Forgotpassword' | translate }} ?</a>
+                <a href="#" [routerLink]="['/signup']" class="btn btn-link btn-info ">{{ 'Createaccount' | translate }} ?</a>
                 <button (click)="signInWithGoogle()" class="btn btn-just-icon btn-google">
                   <i class="fa fa-google-plus"></i>
                 </button>
